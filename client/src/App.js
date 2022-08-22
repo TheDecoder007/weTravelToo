@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../src/assets/index.css";
 
 function App() {
   return (
