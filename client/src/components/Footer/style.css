@@ -1,0 +1,39 @@
+
+
+.Footer {
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    border: none;
+    font-weight: bold;
+    height: 125px;
+    width: 100%;
+}
+
+.footerVid {
+    object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+.footerText { 
+    align-items: center;
+    position: relative;
+    font-size: x-large;
+    text-shadow: 0 0 4px navy;
+    color: white;
+    margin: 3px;
+    justify-content: center;
+ }
+
+ .footerLink {
+    text-align: center;
+    margin-top: 40px;
+    
+ }
