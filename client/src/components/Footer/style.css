@@ -10,6 +10,8 @@
     font-weight: bold;
     height: 125px;
     width: 100%;
+    border-top: 4px solid navy;
+    margin-top: 20px;
 }
 
 .footerVid {
@@ -25,8 +27,8 @@
 .footerText { 
     align-items: center;
     position: relative;
-    font-size: x-large;
-    text-shadow: 0 0 4px navy;
+    font-size: xx-large;
+    text-shadow: 0 0 5px navy;
     color: white;
     margin: 3px;
     justify-content: center;

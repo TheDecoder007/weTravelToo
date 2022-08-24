@@ -19,8 +19,8 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
     border-radius: 10px;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 7px var(--secondary-color);
+    border-color: white;
+    box-shadow: 0 0 9px var(--primary-color);
     font-weight: bold;
     text-align-last: center;
     padding: 10px;
@@ -36,14 +36,22 @@
   } 
 
   .sectionHead {
-    font-size: xx-large;
-    font-weight: bolder;
-    padding-bottom: 15px;
-    text-shadow: 0 0 3px white;
-    border-bottom: 2px solid white;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: navy;
+    font-size: xxx-large;
+    /* font-weight: bold; */
+    /* padding-bottom: 15px; */
+    text-shadow: 0 0 3px var(--primary-color);
+    /* border-bottom: 2px solid white; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--background-color);
+}
+
+.sectionTopRow {
+  background-color: navy;
+  align-items: center;
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 10px;
 }
 
 .CardRow{

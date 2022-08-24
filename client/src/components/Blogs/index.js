@@ -20,10 +20,10 @@ import Row from "react-bootstrap/Row";
 function Blogs() {
   return (
     <Container fluid className="projectCont" id="blogs">
-      <Row>
+      <Row className="sectionTopRow">
         <h3 className="text-center sectionHead">Recent Blogs</h3>
       </Row>
-      {/* <Row className="CardRow"> */}
+      <Row className="CardRow">
         <BlogCard {...cardOneInfo} />
         <BlogCard {...cardTwoInfo} />
         <BlogCard {...cardThreeInfo} />
@@ -35,7 +35,7 @@ function Blogs() {
         <BlogCard {...cardNineInfo} />
         <BlogCard {...cardTenInfo} />
 
-      {/* </Row> */}
+      </Row>
     </Container>
   );
 }
