@@ -40,7 +40,7 @@ export const ADD_BLOG = gql`
   }
 `;
 
-export const ADD_Comment = gql`
+export const ADD_COMMENT = gql`
   mutation addComment($thoughtId: ID!, $commentBody: String!) {
     addComment(thoughtId: $thoughtId, commentBody: $commentBody) {
       _id

@@ -91,10 +91,9 @@ const BlogForm = () => {
       }}
     >
       <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>
-        <div>
+      <Row className="sectionTopRow">
         <h3 className="text-center sectionHead">Write Your Blog</h3>
-        
-        </div>
+        </Row>
         <Row>
           <Col>
             <Form.Control

@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_BLOGS } from "../utils/queries";
 import Auth from "../utils/auth";
-import Row from "react-bootstrap/Row";
 
 import Blogs from "../components/Blogs";
 
@@ -12,10 +11,10 @@ const Home = () => {
   const blogs = data?.blogs || [];
 
   return (
-    <Row className="CardRow">
+    <div>
       {loading ? <div>Loading...</div> : 
-      <Blogs blogs={blogs} />}
-    </Row>
+      <Blogs blogs={blogs} />
+   } </div>
   );
 };
 
