@@ -9,7 +9,7 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
-    
+
     email: {
       type: String,
       required: true,
@@ -27,12 +27,12 @@ const userSchema = new Schema(
         ref: 'Comment'
       }
     ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ]
+    // friends: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    //   }
+    // ]
   },
   {
     toJSON: {
