@@ -4,7 +4,7 @@ import { QUERY_BLOGS } from "../utils/queries";
 import Auth from "../utils/auth";
 import Row from "react-bootstrap/Row";
 
-import Blogs from "./components/Blogs";
+import Blogs from "../components/Blogs";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_BLOGS);
