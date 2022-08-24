@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 // need models to be built
-const { User, Blog } = require('../models');
+const { User, Blog, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -75,7 +75,8 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addReaction: async (parent, { blogId, commentBody }, context) => {
+    // ** Ask Peter if he intended Comment insted of Comment
+    addComment: async (parent, { blogId, commentBody }, context) => {
       if (context.user) {
         const updatedBlog = await Blog.findOneAndUpdate(
           { _id: blogId },
