@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Blog {
     _id: ID
     blogTitle: String
-    blogDescription: Sting
+    blogDescription: String
     blogImage: String
     blogText: String
     createdAt: String
