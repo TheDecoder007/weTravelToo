@@ -64,6 +64,7 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/create" element={<CreateBlog />} />
 
+
             <Route path="/profile">
               <Route path=":username" element={<Profile />} />
               <Route path="" element={<Profile />} />

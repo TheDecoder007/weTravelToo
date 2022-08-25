@@ -1,18 +1,7 @@
 import React from "react";
 import './style.css'
 import BlogCard from "./BlogCard";
-import {
-  cardOneInfo,
-  cardTwoInfo,
-  cardThreeInfo,
-  cardFourInfo,
-  cardFiveInfo,
-  cardSixInfo,
-  cardSevenInfo,
-  cardEightInfo,
-  cardNineInfo,
-  cardTenInfo,
-} from "./data";
+import { blogs } from "./data";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
@@ -24,16 +13,10 @@ function Blogs() {
         <h3 className="text-center sectionHead">Recent Blogs</h3>
       </Row>
       <Row className="CardRow">
-        <BlogCard {...cardOneInfo} />
-        <BlogCard {...cardTwoInfo} />
-        <BlogCard {...cardThreeInfo} />
-        <BlogCard {...cardFourInfo} />
-        <BlogCard {...cardFiveInfo} />
-        <BlogCard {...cardSixInfo} />
-        <BlogCard {...cardSevenInfo} />
-        <BlogCard {...cardEightInfo} />
-        <BlogCard {...cardNineInfo} />
-        <BlogCard {...cardTenInfo} />
+        
+      {blogs.map(blog => {
+  return <BlogCard key={blog.title} {...blog}/>
+})}
 
       </Row>
     </Container>
