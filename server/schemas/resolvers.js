@@ -75,7 +75,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-p
+
     addComment: async (parent, { blogId, commentBody }, context) => {
       if (context.user) {
         const updatedBlog = await Blog.findOneAndUpdate(
