@@ -4,39 +4,41 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
-function BlogCard({ img, title, description, alt }) {
-
-
-    return (
-      <Col className="CardCol">
-        <Card
-          className="text-center wholeCard"
-          style={{ width: "16rem", height: "25rem" }}
-        >
-          {/* <Card.Header className="cardHeader">
-            <video autoPlay loop muted id="video" className="headerVid">
-              <source src={Video2} type="video/mp4" />
-            </video>
-          </Card.Header> */}
-  
-          <Card.Img src={img} alt={alt} />
-  
-          <Card.Body>
-            <div className="cardTitle">{title}</div>
-            <Card.Text>{description}</Card.Text>
-            <>
-            </>
-          </Card.Body>
-            <Card.Footer className="cardFooter">
-              <Button className="AllBtn" as="a" href="" target="_blank">
-                Read Blog
-              </Button>
-            </Card.Footer>
-           
-            {/* )} */}
-        </Card>
-      </Col>
-    );
+const BlogCards = ({ blogs}) => {
+  if (!blogs.length) {
+    return <h3>No Blogs Yet</h3>;
   }
+
+
+
+return (
+  <Col className="CardCol">
+    <Card
+      className="text-center wholeCard"
+      style={{ width: "16rem", height: "25rem" }}
+    >
+      <Card.Img src={blog.blogImage} alt={alt} />
+
+      <Card.Body>
+        <div className="cardTitle">{blog.blogTitle}</div>
+        <Card.Text>{blog.username}</Card.Text>
+        <Card.Text>{blog.blogDescription}</Card.Text>
+        <>
+        </>
+      </Card.Body>
+        <Card.Footer className="cardFooter">
+          <Button className="AllBtn" as="a" href="" target="_blank">
+            Read Blog
+          </Button>
+        </Card.Footer>
+       
+        {/* )} */}
+    </Card>
+  </Col>
+);
+}
+
   
-  export default BlogCard;
+  export default BlogCards;
+
+

@@ -1,82 +1,53 @@
-//this will be the array of card data, empty until someone creates a blog.
-// I hardcoded these to get styling done
 
-export const blogs = [
-  {
-    title: "weTravel",
-    description:
-      "A travel blog site where users can login and create blogs, upload photos, and comment on other blogs.",
-    img: require("../../assets/photos/weTravel.png"),
-    alt: "Screenshots of the weTravel site",
-  },
-  {
-    title: "Decentraland",
-    description:
-      "A Metaverse where building anything is possible, using the SDK. This link is to my personal project, where I test and implement techniques for advanced builds.",
-    img: require("../../assets/photos/Voicebox.png"),
-    alt: "Screenshots of Decentraland",
-  },
 
-  {
-    title: "entertainMe",
-    description:
-      "An entertainment search site using IMDB API to pull movie info, image, and rating and displays as a card.",
-    img: require("../../assets/photos/entertainme.png"),
-    alt: "Screenshots of the entertainMe site",
-  },
+import './App.css';
+import {useState} from 'react';
+function App() {
+    const [blogs,setBlogs]=useState([
+        {title:"Raja",experience:"10+ Years"},
+        {name:"Mano",experience:"2 Years"},
+        {name:"Tom",experience:"5+ Years"},
+    ])
+   
+    const addRow=()=>{
+        let newEmp={name:"Random User1",experience:"6 Years"}
+        setEmps([...emps,newEmp])
+    }
 
-  {
-    title: "Last Slice Collective",
-    description:
-      "A web3 collective I've been working with, that onboards and builds experiences in the Metaverse for high-profile clients around the world.",
-    img: require("../../assets/photos/lastslice-pic.png"),
-    alt: "Screenshots of the Last Slice site",
-  },
+    const updateRow=()=>{
+        let index=0
+        let newEmp=emps[index]
+        newEmp["name"]="Modfied User";
+        emps[index]=newEmp
+        setEmps([...emps])
+    }
 
-  {
-    title: "Weather Dashboard",
-    description:
-      "An app to get local weather reports. Current, 5 day, and recent serches saved.",
-    img: require("../../assets/photos/Weather-app.png"),
-    alt: "Screenshots of the Weather Dashboard site",
-  },
+    const deleteRow = () => {
+        //let name="Mano"
+        //setEmps(emps.filter(emp => emp.name !== name))
+        let copy_emp=[...emps]
+        copy_emp.splice(0,1)
+        setEmps(copy_emp)
+    }
 
-  {
-    title: "weTravel",
-    description:
-      "A travel blog site where users can login and create blogs, upload photos, and comment on other blogs.",
-    img: require("../../assets/photos/weTravel.png"),
-    alt: "Screenshots of the weTravel site",
-  },
-  {
-    title: "Decentraland",
-    description:
-      "A Metaverse where building anything is possible, using the SDK. This link is to my personal project, where I test and implement techniques for advanced builds.",
-    img: require("../../assets/photos/Voicebox.png"),
-    alt: "Screenshots of Decentraland",
-  },
 
-  {
-    title: "entertainMe",
-    description:
-      "An entertainment search site using IMDB API to pull movie info, image, and rating and displays as a card.",
-    img: require("../../assets/photos/entertainme.png"),
-    alt: "Screenshots of the entertainMe site",
-  },
+    return ( 
+    <div className = "App" >
+       {emps.map( (emp,index)=>
+       (
+          <div key={index}>
+              <h3>{emp.name}</h3>
+              <p>{emp.experience}</p>
+          </div>
+       )
+       )}
+       <button onClick={addRow}>Add</button>
+       <button onClick={updateRow}>Update</button>
+       <button onClick={deleteRow}>Delete</button>
 
-  {
-    title: "Last Slice Collective",
-    description:
-      "A web3 collective I've been working with, that onboards and builds experiences in the Metaverse for high-profile clients around the world.",
-    img: require("../../assets/photos/lastslice-pic.png"),
-    alt: "Screenshots of the Last Slice site",
-  },
 
-  {
-    title: "Weather Dashboard",
-    description:
-      "An app to get local weather reports. Current, 5 day, and recent serches saved.",
-    img: require("../../assets/photos/Weather-app.png"),
-    alt: "Screenshots of the Weather Dashboard site",
-  },
-];
+     </div>
+    );
+}
+
+export default App;
