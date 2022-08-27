@@ -15,7 +15,7 @@ function Blogs() {
       <Row className="CardRow">
         
       {blogs.map(blog => {
-  return <BlogCard key={blog.title} {...blog}/>
+  return <BlogCards key={blog.blogTitle} {...blog}/>
 })}
 
       </Row>
