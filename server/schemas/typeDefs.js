@@ -23,7 +23,7 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    ccommentBody: String
+    commentBody: String
     createdAt: String
     username: String
   }
