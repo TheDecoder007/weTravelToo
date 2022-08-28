@@ -1,19 +1,27 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import BlogForm from "../components/BlogForm";
+import React from "react";
+import { Navigate, useParams } from "react-router-dom";
 import BlogList from "../components/BlogList";
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
-// import Row from "react-bootstrap/Row"; // *check validity later*/
-// import Container from "react-bootstrap/esm/Container"; // *check validity later*/
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
+
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   const user = data?.me || data?.user || {};
 
@@ -35,30 +43,29 @@ const Profile = (props) => {
     );
   }
 
-
   return (
-    <div>
-      <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-        </h2>
-      </div>
-
-      <div className="flex-row justify-space-between mb-3">
-        <div className="col-12 mb-3 col-lg-8">
-          <BlogList
-            blogs={user.blogs}
-            title={`${user.username}'s blogs...`}
-          />
-        </div>
-      </div>
-      <div className="mb-3">{!userParam && <BlogForm />}</div>
-    </div>
+    <Container fluid className="projectCont" id="blogs">
+      <Row className="sectionTopRow">
+        <Col>
+          <Button className="AllBtn HomeBtn">
+            <Link to="/create">Create Blog</Link>
+          </Button>
+          <h3 className="text-center sectionHead">
+            Viewing {userParam ? `${user.username}'s` : "your"} profile.
+          </h3>
+          <Button className="AllBtn HomeBtn">
+            <a href="/" onClick={logout}>Log Out</a>
+          </Button>
+        </Col>
+      </Row>
+      <Row className="CardRow">
+        <BlogList blogs={user.blogs} title={`${user.username}'s blogs...`} />
+      </Row>
+    </Container>
   );
 };
 
-
-    // *container as a tag?: check if that is what is used in the front end/bootstrap//if not erase commented section, and update line 10. pk37*/.
+// *container as a tag?: check if that is what is used in the front end/bootstrap//if not erase commented section, and update line 10. pk37*/.
 //   return (
 //     <Container fluid className="projectCont">
 //       <Row>
