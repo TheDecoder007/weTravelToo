@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import BlogForm from "../components/BlogForm";
-import BlogtList from '../components/BlogList';
+import BlogList from "../components/BlogList";
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
-import Row from "react-bootstrap/Row"; // *check validity later*/
-import Container from "react-bootstrap/esm/Container"; // *check validity later*/
+// import Row from "react-bootstrap/Row"; // *check validity later*/
+// import Container from "react-bootstrap/esm/Container"; // *check validity later*/
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
@@ -42,12 +42,6 @@ const Profile = (props) => {
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
-
-        {userParam && (
-          <button className="btn ml-auto" onClick={handleClick}>
-            Add Friend
-          </button>
-        )}
       </div>
 
       <div className="flex-row justify-space-between mb-3">
