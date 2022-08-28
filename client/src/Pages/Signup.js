@@ -1,29 +1,43 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
+
+import Auth from "../utils/auth";
 
 const Signup = () => {
-    const [formState, setFormState] = useState({
-      username: '',
-      email: '',
-      password: '',
-    });
-    const [addUser, { error }] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [addUser, { error }] = useMutation(ADD_USER);
+  const [errorMessage, setErrorMessage] = useState("");
 
-// update state based on form input changes
-const handleChange = (event) => {
+  // update state based on form input changes
+  const handleChange = (event) => {
     const { name, value } = event.target;
+    if (!event.target.value) {
+      setErrorMessage(`${event.target.name} is required.`);
+    } else {
+      setErrorMessage("");
+    }
+    if (!errorMessage) {
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    }
+  };
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-};
-
-// submit form
-const handleFormSubmit = async (event) => {
+  // submit form
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -35,52 +49,74 @@ const handleFormSubmit = async (event) => {
     } catch (e) {
       console.error(e);
     }
-};
+  };
 
-return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Sign Up</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your username"
-                name="username"
-                type="username"
-                id="username"
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="Your email"
-                name="email"
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button className="btn d-block w-100" type="submit">
-                Submit
-              </button>
-            </form>
+  return (
+    <Container
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>
+        <Row className="sectionTopRow">
+          <h3 className="text-center sectionHead">Sign Up</h3>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Label className="LoginHead">Username</Form.Label>
 
-            {error && <div>Signup failed</div>}
+            <Form.Control
+              className="formBack"
+              placeholder="Your username"
+              name="username"
+              type="username"
+              id="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
+            <br />
+          </Col>
+        </Row>
+          <Form.Group>
+          <Form.Label className="LoginHead">Email</Form.Label>
+          <Form.Control
+            className="formBack"
+            placeholder="Your Email"
+            name="email"
+            type="email"
+            id="email"
+            value={formState.email}
+            onChange={handleChange}
+            />
+            </Form.Group> 
+        <br/>
+
+          <Form.Label className="LoginHead">Password</Form.Label>
+          <Form.Control
+            controllId = "formPlaintextPassword"
+            className="formBack"
+            placeholder="Enter Password"
+            name="password"
+            type="password"
+            id="password"
+            value={formState.password}
+            onChange={handleChange}
+          />
+        {errorMessage && (
+          <div>
+            <p className="error-text">{errorMessage}</p>
           </div>
-        </div>
-      </div>
-    </main>
+        )}
+        <Button className="AllBtn SignBtn" type="submit">
+          Submit
+        </Button>
+        <Button className="AllBtn SignBtn" href="/">Go Back
+        </Button>
+      </Form>
+        {error && <div>Signup failed</div>}
+    </Container>
   );
 };
 
