@@ -9,7 +9,6 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
-
     email: {
       type: String,
       required: true,
@@ -21,18 +20,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    Comments: [
+    blogs: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Comment'
+        ref: 'Blog'
       }
-    ],
-    // friends: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    //   }
-    // ]
+    ]
   },
   {
     toJSON: {
@@ -56,9 +49,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
-});
 
 const User = model('User', userSchema);
 
