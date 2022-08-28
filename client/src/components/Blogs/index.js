@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css'
-import BlogCard from "./BlogCard";
+import BlogCards from "./BlogCard";
 import { blogs } from "./data";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

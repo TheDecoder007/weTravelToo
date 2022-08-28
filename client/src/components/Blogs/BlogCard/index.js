@@ -17,7 +17,7 @@ return (
       className="text-center wholeCard"
       style={{ width: "16rem", height: "25rem" }}
     >
-      <Card.Img src={Blog.blogImage} alt={alt} />
+      <Card.Img src={Blog.blogImage} />
 
       <Card.Body>
         <div className="cardTitle">{Blog.blogTitle}</div>

@@ -1,6 +1,6 @@
 import React from "react";
-import BlogList from "../components/BlogList";
-import BlogForm from "../components/BlogForm";
+// import BlogList from "../components/BlogList";
+// import BlogForm from "../components/BlogForm";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import BlogCards from "../components/Blogs/BlogCard";
