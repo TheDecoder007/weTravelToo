@@ -1,9 +1,8 @@
 import React from "react";
-// import BlogList from "../components/BlogList";
 // import BlogForm from "../components/BlogForm";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import BlogCards from "../components/Blogs/BlogCard";
+import BlogList from "../components/BlogList";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
@@ -13,10 +12,10 @@ import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_BLOGS);
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
-  const blogs = data?.blogs || [];
-  const loggedIn = Auth.loggedIn();
+  // const { loading, data } = useQuery(QUERY_BLOGS);
+  // const { data: userData } = useQuery(QUERY_ME_BASIC);
+  // const blogs = data?.blogs || [];
+  // const loggedIn = Auth.loggedIn();
 
   return (
  
@@ -31,7 +30,7 @@ const Home = () => {
        </Button>
       </Row>
       <Row className="CardRow">
-  <BlogCards blogs={blogs} title="Some Feed for Blog(s)..." />
+  <BlogList blogs={blogs} title="Some Feed for Blog(s)..." />
         
       </Row>
     </Container>

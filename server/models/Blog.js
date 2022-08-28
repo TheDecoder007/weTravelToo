@@ -4,6 +4,21 @@ const dateFormat = require('../utils/dateFormat');
 
 const blogSchema = new Schema(
   {
+    blogTitle: {
+    type: String,
+    required: 'You need a title!',
+    minlength: 1,
+    maxlength: 25
+  },
+    blogDescription: {
+      type: String,
+      required: 'You need a description!',
+      minlength: 1,
+      maxlength: 140
+    },
+    blogImage: {
+      type: String,
+    },
     blogText: {
       type: String,
       required: 'You need to leave a blog!',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import BlogForm from "../components/BlogForm";
-import BlogCards from "../components/Blogs/BlogCard";
+import BlogList from "../components/BlogList";
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
@@ -46,7 +46,7 @@ const Profile = (props) => {
 
       <div className="flex-row justify-space-between mb-3">
         <div className="col-12 mb-3 col-lg-8">
-          <BlogCards
+          <BlogList
             blogs={user.blogs}
             title={`${user.username}'s blogs...`}
           />
