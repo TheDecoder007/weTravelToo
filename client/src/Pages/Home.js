@@ -6,41 +6,46 @@ import Col from "react-bootstrap/Col";
 import BlogList from "../components/BlogList";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
-import Auth from "../utils/auth";
+
 
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_BLOGS);
   const { data: userData } = useQuery(QUERY_ME_BASIC);
   const blogs = data?.blogs || [];
-  // const loggedIn = Auth.loggedIn();
+  const loggedIn = Auth.loggedIn();
 
   return (
- 
+    
     <Container fluid className="projectCont" id="blogs">
       <Row className="sectionTopRow">
-        <Col>
-        <Button className="AllBtn HomeBtn">
+
+        <h3 className="text-center sectionHead">Recent Blogs</h3>
+        {!loggedIn && (
+        <Button className="AllBtn">
         <Link to="/signup">Signup</Link>
        </Button>
-       <Button className="AllBtn HomeBtn">
-       <Link to="/create">Create Blog</Link>
-       </Button>
-        </Col>
-        <Col>
-        <h3 className="text-center sectionHead">Recent Blogs</h3>
-        </Col>
-        <Col>
-       <Button className="AllBtn HomeBtn">
-       <Link to="/profile">My Profile</Link>
-       </Button>
-       <Button className="AllBtn HomeBtn">
+       )}
+       {!loggedIn && (
+       <Button className="AllBtn">
        <Link to="/login">Login</Link>
        </Button>
-        </Col>
-      </Row>
+       )}
+      {loggedIn && (
+      <Button className="AllBtn">
+       <Link to="/CreateBlog">Create-Blog</Link>
+       </Button>
+       )}
+         {loggedIn && (
+      <Button className="AllBtn">
+       <Link to="/CreateBlog">Logout</Link>
+       </Button>
+       )}
+       </Row>
+
       <Row className="CardRow">
   <BlogList blogs={blogs} title="Some Feed for Blog(s)..." />
         
