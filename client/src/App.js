@@ -20,6 +20,7 @@ import Container from "react-bootstrap/Container";
 
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import Signup from "./Pages/Signup"
 import Profile from "./Pages/Profile";
 import SingleBlog from "./Pages/SingleBlog";
 import Team from "./Pages/Team";
@@ -61,6 +62,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
             <Route path="/team" element={<Team />} />
             <Route path="/create" element={<CreateBlog />} />
 
