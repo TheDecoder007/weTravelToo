@@ -2,6 +2,7 @@ import React from "react";
 // import BlogForm from "../components/BlogForm";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import BlogList from "../components/BlogList";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -20,13 +21,25 @@ const Home = () => {
  
     <Container fluid className="projectCont" id="blogs">
       <Row className="sectionTopRow">
-        <h3 className="text-center sectionHead">Recent Blogs</h3>
-        <Button className="AllBtn">
+        <Col>
+        <Button className="AllBtn HomeBtn">
         <Link to="/signup">Signup</Link>
        </Button>
-       <Button className="AllBtn">
+       <Button className="AllBtn HomeBtn">
+       <Link to="/create">Create Blog</Link>
+       </Button>
+        </Col>
+        <Col>
+        <h3 className="text-center sectionHead">Recent Blogs</h3>
+        </Col>
+        <Col>
+       <Button className="AllBtn HomeBtn">
+       <Link to="/profile">My Profile</Link>
+       </Button>
+       <Button className="AllBtn HomeBtn">
        <Link to="/login">Login</Link>
        </Button>
+        </Col>
       </Row>
       <Row className="CardRow">
   <BlogList blogs={blogs} title="Some Feed for Blog(s)..." />

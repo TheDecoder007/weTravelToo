@@ -63,3 +63,21 @@
 .SignBtn {
   margin: 10px;
 }
+.HomeBtn {
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px var(--background-color);
+}
+.HomeBtn a {
+  text-decoration: none;
+  color: navy;
+  text-shadow: 0 0 3px white;
+}
+
+.HomeBtn:hover {
+  border-color: navy;
+  box-shadow: 0 0 10px var(--secondary-color);
+  
+}
+
