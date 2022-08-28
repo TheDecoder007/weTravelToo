@@ -5,16 +5,15 @@ import Row from "react-bootstrap/Row";
 import BlogList from "../components/BlogList";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-
-
 import { useQuery } from "@apollo/client";
 import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
 import Auth from "../utils/auth";
 
+
 const Home = () => {
-  // const { loading, data } = useQuery(QUERY_BLOGS);
-  // const { data: userData } = useQuery(QUERY_ME_BASIC);
-  // const blogs = data?.blogs || [];
+  const { loading, data } = useQuery(QUERY_BLOGS);
+  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const blogs = data?.blogs || [];
   // const loggedIn = Auth.loggedIn();
 
   return (
