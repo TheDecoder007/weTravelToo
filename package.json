@@ -1,5 +1,5 @@
 {
-    "name": "weTravelToo",
+    "name": "we-travel-too",
     "version": "1.0.0",
     "description": "A full MERN stack trevel blog that allows users to interact by signing up, posting and commenting. Travel blogs are big for people who like to record experiences and this app will also assist future travelers research destinations by reading about others' experiences! ",
     "main": "server/server.js",
