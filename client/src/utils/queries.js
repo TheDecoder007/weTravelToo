@@ -4,7 +4,10 @@ export const QUERY_BLOGS = gql`
   query blogs($username: String) {
     blogs(username: $username) {
       _id
+      blogTitle
       blogText
+      blogImage
+      blogDescription
       createdAt
       username
       commentCount
