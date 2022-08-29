@@ -33,7 +33,7 @@ return (
       </Card.Body>
         <Card.Footer className="cardFooter">
           <Button className="AllBtn">
-            <Link to={`/blog/${blog._id}`}></Link>
+            <Link to={`/SingleBlog/${blog._id}`}></Link>
             Read Blog
           </Button>
         </Card.Footer>       

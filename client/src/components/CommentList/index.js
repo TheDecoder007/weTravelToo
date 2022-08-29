@@ -20,7 +20,7 @@ const CommentList = ({ comments }) => {
                 to={`/profile/${comment.username}`}
                 style={{ fontWeight: 700 }}
               >
-                {comment.username} on {comment.createdAt}
+                {comment.username} commented on {comment.createdAt}
               </Link>
             </Card.Header>
             <Card.Body>
