@@ -13,9 +13,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Hero from "./components/Hero";
 import PageFooter from "./components/Footer";
-import Blogs from "./components/Blogs";
-import TopNav from "./components/TopNav";
-import BlogForm from "./components/BlogForm";
 import Container from "react-bootstrap/Container";
 
 import Home from "./Pages/Home";
