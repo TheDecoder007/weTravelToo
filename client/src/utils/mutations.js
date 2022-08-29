@@ -41,8 +41,8 @@ export const ADD_BLOG = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentBody: String!) {
-    addComment(thoughtId: $thoughtId, commentBody: $commentBody) {
+  mutation addComment($blogId: ID!, $commentBody: String!) {
+    addComment(blogId: $blogId, commentBody: $commentBody) {
       _id
       commentCount
       comments {
