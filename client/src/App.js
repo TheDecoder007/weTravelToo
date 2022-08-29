@@ -70,6 +70,7 @@ function App() {
               <Route path="" element={<Profile />} />
             </Route>
             
+            {/* not sure if this is right, or should be /SingleBlog/:id */}
             <Route path="/blog/:id" element={<SingleBlog />} />
 
             <Route path="*" element={<NoMatch />} />

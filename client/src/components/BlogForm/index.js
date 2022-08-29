@@ -111,7 +111,7 @@ const BlogForm = () => {
           <InputGroup.Text className="formText">Description</InputGroup.Text>
           <Form.Control
             className={`formBack ${characterCount === 140 || error ? "text-error" : ""}`}
-          >
+            >
             Character Count: {characterCount}/140
             {error && <span className="ml-2">Something went wrong...</span>}
             as="textarea"
@@ -141,7 +141,7 @@ const BlogForm = () => {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <Button className="AllBtn FormBtn" variant="primary" type="submit">
+        <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
           Submit
         </Button>
         
