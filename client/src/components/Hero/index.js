@@ -7,13 +7,13 @@ import './style.css'
 
 const Hero = () => {
   return (
-    <Container fluid className="Hero">
+    // <Container className="Hero">
         <Row className="heroRow">
       <video autoPlay loop muted id="video">
         <source src={Video} type="video/mp4" />
       </video>
         </Row>
-        </Container>
+          // </Container>
   );
 };
 

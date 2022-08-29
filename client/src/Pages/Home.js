@@ -11,8 +11,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_BLOGS);
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  // const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data } = useQuery(QUERY_BLOGS);
   const blogs = data?.blogs || [];
   // const loggedIn = Auth.loggedIn();
 

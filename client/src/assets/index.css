@@ -12,7 +12,6 @@
     background-color: var(--background-color);
     text-align: -webkit-center;
     height: 100%;
-    padding: 0px;
   }
 
   .AllBtn {
@@ -58,6 +57,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 3px;
 }
 
 .SignBtn {
@@ -83,4 +83,32 @@
 
 .cardDiv {
   display: contents;
+}
+
+.projectCont {
+  padding: 0px;
+}
+
+.singleCardRow {
+  margin: 20px;
+}
+.singleCard {
+  padding: 0px;
+}
+
+.card-header {
+  background-color: aliceblue;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: navy;
+}
+
+.BtnLink {
+  color: white;
+  text-decoration: none;
+}
+.BtnLink:hover {
+  color: white;
 }

@@ -16,7 +16,7 @@ const CommentList = ({ comments }) => {
         comments.map((comment) => (
           <Card>
             <Card.Header>
-              <Link
+              <Link className="cardLink"
                 to={`/profile/${comment.username}`}
                 style={{ fontWeight: 700 }}
               >

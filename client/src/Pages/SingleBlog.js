@@ -26,14 +26,14 @@ const SingleBlog = (props) => {
   }
 
   return (
-    <Container fluid className="projectCont" id="blogs">
+    <Container fluid className="projectCont">
       <Row className="sectionTopRow">
       <h3 className="text-center sectionHead">{blog.blogTitle}</h3>
     </Row>
-    <Row>
-      <Card>
-        <Card.Header>
-        <Link to={`/profile/${blog.username}`} style={{ fontWeight: 700 }}>
+    <Row className="singleCardRow">
+      <Card className="singleCard">
+        <Card.Header className="cardHeader">
+        <Link className="cardLink" to={`/profile/${blog.username}`} style={{ fontWeight: 700 }}>
             {blog.username} blogged on {blog.createdAt}
           </Link>
         </Card.Header>
@@ -50,13 +50,13 @@ const SingleBlog = (props) => {
 
           <CommentForm />
 
-          <Button className="AllBtn HomeBtn">
-            <Link to="/">Home</Link>
+          <Button className="AllBtn ">
+            <Link className="BtnLink" to="/">Go Home</Link>
           </Button>
         </>
       ) : (
-        <Button className="AllBtn HomeBtn">
-          <Link to="/">Home</Link>
+        <Button className="AllBtn ">
+          <Link className="BtnLink" to="/">Go Home</Link>
         </Button>
       )}
       </Container>

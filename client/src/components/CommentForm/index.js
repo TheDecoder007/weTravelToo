@@ -90,10 +90,12 @@ const CommentForm = () => {
       </Row>
 <Row>
 <Col>
-    <Button className="AllBtn HomeBtn" onClick={handleFormSubmit}>Submit           
+  <br/>
+    <Button className="AllBtn" onClick={handleFormSubmit}>Submit Comment         
           </Button>
 </Col>
 </Row>
+  <br/>
     </div>
     // {/* </Container> */}
     );

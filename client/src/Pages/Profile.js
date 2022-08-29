@@ -26,9 +26,9 @@ const Profile = (props) => {
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is the logged-in user's
-  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-  //   return <Navigate to="/profile" />;
-  // }
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Navigate to="/profile" />;
+  }
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -65,17 +65,5 @@ const Profile = (props) => {
   );
 };
 
-// *container as a tag?: check if that is what is used in the front end/bootstrap//if not erase commented section, and update line 10. pk37*/.
-//   return (
-//     <Container fluid className="projectCont">
-//       <Row>
-//         <h3 className="text-center sectionHead">
-//           Viewing {userParam ? `${user.username}'s` : "your"} profile.
-//         </h3>
-//       </Row>
-//       <Row className="CardRow">
-//         <Blogs blogs={user.blogs} title={`${user.username}'s blogs...`} />
-//       </Row>
-//     </Container>
 
 export default Profile;
