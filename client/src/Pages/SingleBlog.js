@@ -58,13 +58,13 @@ const SingleBlog = (props) => {
           <CommentForm />
       </Container>
 
-          <Button className="AllBtn ">
-            <Link className="BtnLink" to="/">Go Home</Link>
+          <Button href="/" className="AllBtn ">Go Home
+            {/* <Link className="BtnLink" to="/">Go Home</Link> */}
           </Button>
         </>
       ) : (
-        <Button className="AllBtn ">
-          <Link className="BtnLink" to="/">Go Home</Link>
+        <Button href="/" className="AllBtn ">Go Home
+          {/* <Link className="BtnLink" to="/">Go Home</Link> */}
         </Button>
       )}
       </Container>
