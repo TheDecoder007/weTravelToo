@@ -94,6 +94,7 @@
 }
 .singleCard {
   padding: 0px;
+  border: 2px solid navy;
 }
 
 .card-header {
@@ -111,4 +112,32 @@
 }
 .BtnLink:hover {
   color: white;
+}
+
+.AuthBtn {
+  background-color: var(--background-color);
+  color: navy;
+  border-radius: 10px;
+  border-color:white;
+  box-shadow: 0 0 9px var(--primary-color);
+  font-weight: bold;
+  text-align-last: center;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* .AuthBtn a {
+  text-decoration: none;
+  color: navy;
+  text-shadow: 0 0 3px white;
+} */
+
+.AuthBtn:hover {
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px white;
+}
+
+.AuthBtn a:hover {
+  color: white;
+  text-shadow: 0 0 2px navy;
 }

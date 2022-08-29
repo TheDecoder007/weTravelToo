@@ -28,7 +28,7 @@ const SingleBlog = (props) => {
   return (
     <Container fluid className="projectCont">
       <Row className="sectionTopRow">
-      <h3 className="text-center sectionHead">{blog.blogTitle}</h3>
+      <h3 className="text-center sectionHead">{blog.username}</h3>
     </Row>
     <Row className="singleCardRow">
       <Card className="singleCard">
@@ -47,8 +47,16 @@ const SingleBlog = (props) => {
       <br/>
       {Auth.loggedIn() ? (
         <>
+   <Container
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      >
 
           <CommentForm />
+      </Container>
 
           <Button className="AllBtn ">
             <Link className="BtnLink" to="/">Go Home</Link>

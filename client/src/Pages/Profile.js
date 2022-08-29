@@ -47,13 +47,12 @@ const Profile = (props) => {
     <Container fluid className="projectCont" id="blogs">
       <Row className="sectionTopRow">
         <Col>
-          <Button className="AllBtn HomeBtn">
-            <Link to="/create">Create Blog</Link>
+          <Button href="/create" className="AuthBtn">Create Blog
           </Button>
           <h3 className="text-center sectionHead">
             Viewing {userParam ? `${user.username}'s` : "your"} profile.
           </h3>
-          <Button className="AllBtn HomeBtn">
+          <Button className="AuthBtn">
             <a href="/" onClick={logout}>Log Out</a>
           </Button>
         </Col>

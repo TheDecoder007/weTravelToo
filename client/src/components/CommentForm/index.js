@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
 import { QUERY_BLOGS, QUERY_ME, QUERY_COMMENTS } from '../../utils/queries';
+import "./style.css";
 
 const CommentForm = () => {
   const [formState, setFormState] = useState({
@@ -74,7 +75,7 @@ const CommentForm = () => {
   //   }}
   // > */}
   <Row>
-  <Col>
+  <Col className="commentForm">
   <InputGroup>
   <InputGroup.Text className="formText">Comment</InputGroup.Text>
       <Form.Control 

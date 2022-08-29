@@ -28,21 +28,19 @@ const Home = () => {
       <>
       <Row className="sectionTopRow">
           <Col>
-            <Button className="AllBtn HomeBtn">
-              <Link to="/profile">My Profile</Link>
+            <Button href="/profile" className="AuthBtn">My Profile
             </Button>
+          <Button href="/create" className="AuthBtn">Create Blog
+          </Button>
           </Col>
           <Col>
         <h3 className="text-center sectionHead">Recent Blogs</h3>
           </Col>
           <Col>
-            <Button className="AllBtn HomeBtn">
-              <a href="/" onClick={logout}>
+            <Button href="/" className="AuthBtn" onClick={logout}>            
                 Log Out
-              </a>
             </Button>
-        </Col>
-        
+        </Col>       
         </Row>
         
         </>
@@ -51,16 +49,14 @@ const Home = () => {
 
       <Row className="sectionTopRow">
           <Col>
-            <Button className="AllBtn HomeBtn">
-              <Link to="/signup">Signup</Link>
+            <Button href="/signup" className="AllBtn HomeBtn">Sign Up
             </Button>
           </Col>
           <Col>
             <h3 className="text-center sectionHead">Recent Blogs</h3>
           </Col>
           <Col>
-            <Button className="AllBtn HomeBtn">
-              <Link to="/login">Login</Link>
+            <Button href="/login" className="AllBtn HomeBtn">Log In
             </Button>
           </Col>
       </Row>
