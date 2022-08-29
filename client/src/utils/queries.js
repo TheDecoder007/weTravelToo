@@ -25,7 +25,10 @@ export const QUERY_BLOG = gql`
   query blog($id: ID!) {
     blog(_id: $id) {
       _id
+      blogTitle
       blogText
+      blogImage
+      blogDescription
       createdAt
       username
       commentCount
@@ -47,7 +50,10 @@ export const QUERY_USER = gql`
       email
       blogs {
         _id
-        blogText
+        blogTitle
+      blogText
+      blogImage
+      blogDescription
         createdAt
         commentCount
       }
@@ -63,7 +69,10 @@ export const QUERY_ME = gql`
       email
       blogs {
         _id
-        blogText
+        blogTitle
+      blogText
+      blogImage
+      blogDescription
         createdAt
         commentCount
         comments {
