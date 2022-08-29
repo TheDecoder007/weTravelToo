@@ -13,13 +13,14 @@ const BlogList = ({ blogs }) => {
 
 
 return (
-  <Col className="CardCol">
-     {blogs &&
-        blogs.map((blog) => (
+  <div className="cardDiv">
+  {blogs &&
+    blogs.map((blog) => (
+      <Col className="CardCol">
     <Card
       className="text-center wholeCard"
       style={{ width: "16rem", height: "25rem" }}
-    >
+      >
       <Card.Img src={blog.blogImage} />
 
       <Card.Body>
@@ -35,11 +36,11 @@ return (
             <Link to={`/SingleBlog/${blog._id}`}></Link>
             Read Blog
           </Button>
-        </Card.Footer>
-       
+        </Card.Footer>       
     </Card>
+        </Col>
         ))}
-  </Col>
+      </div>
 );
 }
 

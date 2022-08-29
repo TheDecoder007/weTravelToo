@@ -69,6 +69,8 @@ const Home = () => {
 
       <Row className="CardRow">
         <BlogList blogs={blogs} title="Some Feed for Blog(s)..." />
+        {/* key={blog.blogId} {...blog} */}
+
       </Row>
       </Container>
   );

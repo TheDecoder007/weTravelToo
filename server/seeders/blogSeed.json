@@ -1,8 +1,9 @@
+
 [
     {
         "blogTitle" : "Blog Title",
         "blogDescription" : "Blog Description",
-        "blogImage" : "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhdmVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "blogImage" : "../client/src/assets/cuba.png",
         "blogText" : "molestiae dicta voluptas ut iusto et hic nam", 
         "username" : "Jody.Eichmann", 
         "comments" : [ 
