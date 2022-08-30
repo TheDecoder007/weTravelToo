@@ -3,7 +3,6 @@ import './style.css';
 import { useMutation } from "@apollo/client";
 import { ADD_BLOG } from "../../utils/mutations";
 import { QUERY_BLOGS, QUERY_ME } from '../../utils/queries';
-// import { validateEmail } from "../../assets/utils/helpers";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -11,7 +10,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
-// import Nav from "react-bootstrap/Nav";
 
 
 const BlogForm = () => {
