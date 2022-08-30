@@ -160,7 +160,7 @@ const BlogForm = () => {
         </Button>
 
         
-        <Button className="AllBtn FormBtn" variant="primary" type="submit" onClick={showWidget}>
+        <Button className="AllBtn FormBtn" variant="primary"  onClick={showWidget}>
 
           Upload Photo
         </Button>
