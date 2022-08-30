@@ -9,8 +9,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const CreateBlog = () => {
-
+export default function CreateBlog() {
+console.log("cherry")
 
   return (
     <Container fluid className="projectCont">
@@ -33,5 +33,3 @@ const CreateBlog = () => {
     </Container>
   );
 };
-
-export default CreateBlog;

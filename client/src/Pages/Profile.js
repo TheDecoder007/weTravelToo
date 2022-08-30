@@ -42,8 +42,9 @@ const Profile = (props) => {
   //     </h4>
   //   );
   // }
-
+console.log("bananas")
   return (
+    
     <Container fluid className="projectCont" id="blogs">
       <Row className="sectionTopRow">
         <Col>

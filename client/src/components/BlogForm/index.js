@@ -83,13 +83,15 @@ const BlogForm = () => {
   };
 
   return (
-    <Container
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    // <Container
+    //   style={{
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //   }}
+    // >
+    <div>
+
       <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>
       <Row className="sectionTopRow">
         <h3 className="text-center sectionHead">Write Your Blog</h3>
@@ -107,25 +109,27 @@ const BlogForm = () => {
           <br/>
           </Col>
         </Row>
-        <InputGroup>
-          <InputGroup.Text className="formText">Description</InputGroup.Text>
+        {/* <InputGroup> */}
+          {/* <InputGroup.Text className="formText">Description</InputGroup.Text> */}
           <Form.Control
-            className={`formBack ${characterCount === 140 || error ? "text-error" : ""}`}
+            // className={`formBack ${characterCount === 140 || error ? "text-error" : ""}`}
             >
-            Character Count: {characterCount}/140
-            {error && <span className="ml-2">Something went wrong...</span>}
-            as="textarea"
+            {/* Character Count: {characterCount}/140
+            {error && <span className="ml-2">Something went wrong...</span>} */}
+            {/* as="textarea"
             aria-label="With textarea"
             name="description"
             defaultValue={description}
             onBlur={handleChange}
-            rows="3"
+            rows="3" */}
             </Form.Control>
 
-        </InputGroup>
+        {/* </InputGroup> */}
         <br/>
-        <InputGroup>
-          <InputGroup.Text className="formText">Your Blog</InputGroup.Text>
+        {/* <InputGroup> */}
+        <div>testing input</div>
+        <textarea type="text" maxLength="140"/>
+          {/* <InputGroup.Text className="formText">Your Blog</InputGroup.Text> */}
           <Form.Control
           className="formBack"
             as="textarea"
@@ -134,8 +138,8 @@ const BlogForm = () => {
             defaultValue={body}
             onBlur={handleChange}
             rows="10"
-          />
-        </InputGroup>
+            />
+        {/* </InputGroup> */}
         {errorMessage && (
           <div>
             <p className="error-text">{errorMessage}</p>
@@ -149,7 +153,8 @@ const BlogForm = () => {
           Upload Photo
         </Button>
       </Form>
-    </Container>
+      </div>
+    // </Container>
   );
 }
 

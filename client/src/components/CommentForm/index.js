@@ -12,11 +12,11 @@ import "./style.css";
 
 const CommentForm = () => {
   const [formState, setFormState] = useState({
-    body: "",
+    commentBody: "",
   });
   const [characterCount, setCharacterCount] = useState(0);
 
-  const { title, description, body } = formState;
+  const { commentBody } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
   const [addComment, { error }] = useMutation(ADD_COMMENT, {
@@ -31,7 +31,7 @@ const CommentForm = () => {
       });
     }
   });
-
+console.log(commentBody, "commenetsdfsd")
   const handleChange = (event) => {
     if (event.target.value.length <= 140) {
         setFormState(event.target.value);
@@ -49,11 +49,11 @@ const CommentForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+console.log(commentBody,"Commented")
     try {
       // add thought to database
       await addComment({
-        variables: { title, description, body },
+        variables: { commentBody },
       });
 
       // clear form value
@@ -82,9 +82,9 @@ const CommentForm = () => {
       className="formBack"
       as="textarea"
       aria-label="With textarea"
-      name="body"
-      defaultValue={body}
-      onBlur={handleChange}
+      name="commentBody"
+      defaultValue={commentBody}
+      onChange={handleChange}
       rows="3" />
     </InputGroup>
       </Col>

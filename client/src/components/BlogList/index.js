@@ -6,13 +6,12 @@ import Col from "react-bootstrap/Col";
 //import { Link } from "react-router-dom";
 
 const BlogList = ({ blogs }) => {
-  if (!blogs.length) {
-    return <h3>No Blogs Yet</h3>;
-  }
+
 
 
 
   return (
+    blogs && !blogs.length? <h3>No Blogs Yet</h3>:
     <div className="cardDiv">
       {blogs &&
         blogs.map(blog => (

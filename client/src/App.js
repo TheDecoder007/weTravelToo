@@ -23,6 +23,7 @@ import SingleBlog from "./Pages/SingleBlog";
 import Team from "./Pages/Team";
 import NoMatch from "./Pages/NoMatch";
 import CreateBlog from "./Pages/CreateBlog";
+import BlogForm from "./components/BlogForm";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -52,32 +53,28 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Hero />
     <Router>
       <Container fluid className="mainContainer">
-      <Hero />
-      
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-            <Route path="/team" element={<Team />} />
-            <Route path="/create" element={<CreateBlog />} />
+            <Route path="/create" element={<CreateBlog />} /> 
 
 
-            <Route path="/profile">
-              <Route path=":username" element={<Profile />} />
-              <Route path="" element={<Profile />} />
-            </Route>
+            <Route path="/profile" element={<Profile />} />
+             
             
             {/* not sure if this is right, or should be /SingleBlog/:id */}
             <Route path="/blog/:id" element={<SingleBlog />} />
 
             <Route path="*" element={<NoMatch />} />
           </Routes>
-        <PageFooter />
         </Container>
     </Router>
+        <PageFooter />
   </ApolloProvider>
   
     );
