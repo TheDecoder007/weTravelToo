@@ -33,7 +33,7 @@ const SingleBlog = (props) => {
     <Row className="singleCardRow">
       <Card className="singleCard">
         <Card.Header className="cardHeader">
-        <Link className="cardLink" to={`/profile/${blog.username}`} style={{ fontWeight: 700 }}>
+        <Link to={`/profile/${blog.username}`}  className="cardLink" style={{ fontWeight: 700 }}>
             {blog.username} blogged on {blog.createdAt}
           </Link>
         </Card.Header>
@@ -57,15 +57,16 @@ const SingleBlog = (props) => {
 
           <CommentForm />
       </Container>
-
-          <Button href="/" className="AllBtn ">Go Home
-            {/* <Link className="BtnLink" to="/">Go Home</Link> */}
+        <Link to="/">
+          <Button className="AllBtn ">Go Home
           </Button>
+        </Link>
         </>
       ) : (
-        <Button href="/" className="AllBtn ">Go Home
-          {/* <Link className="BtnLink" to="/">Go Home</Link> */}
+        <Link to="/">
+        <Button className="AllBtn ">Go Home
         </Button>
+        </Link>
       )}
       </Container>
   );

@@ -53,9 +53,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Container fluid className="mainContainer">
       <Hero />
     <Router>
-      <Container fluid className="mainContainer">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -72,9 +72,9 @@ function App() {
 
             <Route path="*" element={<NoMatch />} />
           </Routes>
-        </Container>
     </Router>
         <PageFooter />
+        </Container>
   </ApolloProvider>
   
     );

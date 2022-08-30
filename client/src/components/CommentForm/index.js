@@ -52,7 +52,7 @@ console.log(commentBody, "commenetsdfsd")
     event.preventDefault();
 console.log(commentBody,"Commented")
     try {
-      // add thought to database
+      // add comment to database
       await addComment({
         variables: { commentBody },
       });

@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Link } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
@@ -60,7 +61,7 @@ const Login = (props) => {
         </Row>
         <Row>
           <Col>
-            <Form.Label className="LoginHead">Username</Form.Label>
+            <Form.Label className="LoginHead">Email</Form.Label>
             <Form.Control
               className="formBack"
               placeholder="Your email"
@@ -90,9 +91,11 @@ const Login = (props) => {
         <Button className="AllBtn SignBtn" type="submit">
           Submit
         </Button>
-        <Button className="AllBtn SignBtn" href="/">
+        <Link to="/">
+        <Button className="AllBtn SignBtn">
           Go Back
         </Button>
+        </Link>
       </Form>
       {error && <div>Login failed</div>}
     </Container>

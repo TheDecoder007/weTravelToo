@@ -112,8 +112,10 @@ const Signup = () => {
         <Button className="AllBtn SignBtn" type="submit">
           Submit
         </Button>
-        <Button className="AllBtn SignBtn" href="/">Go Back
+        <Link to="/">
+        <Button className="AllBtn SignBtn">Go Back
         </Button>
+        </Link>
       </Form>
         {error && <div>Signup failed</div>}
     </Container>
