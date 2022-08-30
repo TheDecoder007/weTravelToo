@@ -82,6 +82,23 @@ const BlogForm = () => {
     }
   };
 
+   const showWidget = () => {
+    
+    let widget = window.cloudinary.createUploadWidget({ 
+       cloudName: `dfe8l6xnx`,
+       uploadPreset: `weTravel`,
+       sources: [ "local", "url", 'instagram', 'unsplash'],
+       cropping: true}, 
+    (error, result) => {
+      if (!error && result && result.event === "success") { 
+      console.log(result.info.url); 
+      document
+        .getElementById("uploadedimage")
+        .setAttribute("src", result.info.secure_url);
+    }});
+    widget.open()
+  }
+
   return (
     // <Container
     //   style={{
@@ -123,7 +140,7 @@ const BlogForm = () => {
             onBlur={handleChange}
             rows="3" */}
             </Form.Control>
-
+            
         {/* </InputGroup> */}
         <br/>
         {/* <InputGroup> */}
@@ -139,6 +156,8 @@ const BlogForm = () => {
             onBlur={handleChange}
             rows="10"
             />
+            <img id="uploadedimage" src="">
+    </img>
         {/* </InputGroup> */}
         {errorMessage && (
           <div>
@@ -149,7 +168,7 @@ const BlogForm = () => {
           Submit
         </Button>
         
-        <Button className="AllBtn FormBtn" variant="primary" type="submit">
+        <Button className="AllBtn FormBtn" variant="primary" type="submit" onClick={showWidget}>
           Upload Photo
         </Button>
       </Form>
