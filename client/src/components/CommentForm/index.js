@@ -12,7 +12,8 @@ import "./style.css";
 
 const CommentForm = () => {
   const [formState, setFormState] = useState({
-    commentBody: "",
+    commentBody: ""
+   
   });
   const [characterCount, setCharacterCount] = useState(0);
 
