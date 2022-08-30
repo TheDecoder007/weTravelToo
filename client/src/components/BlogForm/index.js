@@ -77,6 +77,23 @@ const BlogForm = () => {
     }
   };
 
+   const showWidget = () => {
+    
+    let widget = window.cloudinary.createUploadWidget({ 
+       cloudName: `dfe8l6xnx`,
+       uploadPreset: `weTravel`,
+       sources: [ "local", "url", 'instagram', 'unsplash'],
+       cropping: true}, 
+    (error, result) => {
+      if (!error && result && result.event === "success") { 
+      console.log(result.info.url); 
+      document
+        .getElementById("uploadedimage")
+        .setAttribute("src", result.info.secure_url);
+    }});
+    widget.open()
+  }
+
   return (
     <Container fluid className="CreateCont"
    
@@ -106,12 +123,14 @@ const BlogForm = () => {
             name="description"
             defaultValue={description}
             onBlur={handleChange}
+
             rows="2"
             maxLength="140"
             placeholder="140 characters max"
             />
 
         </InputGroup>
+
         <br/>
         <h4 className="formHead">Your Blog</h4>
         <InputGroup>
@@ -124,7 +143,13 @@ const BlogForm = () => {
             onBlur={handleChange}
             rows="10"
             />
+
+            <img id="uploadedimage" src="">
+    </img>
+
+
         </InputGroup>
+
         {errorMessage && (
           <div>
             <p className="error-text">{errorMessage}</p>
@@ -133,8 +158,10 @@ const BlogForm = () => {
         <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
           Submit
         </Button>
-       
-        <Button className="AllBtn FormBtn" type="submit">
+
+        
+        <Button className="AllBtn FormBtn" variant="primary" type="submit" onClick={showWidget}>
+
           Upload Photo
         </Button>
       </Form>
