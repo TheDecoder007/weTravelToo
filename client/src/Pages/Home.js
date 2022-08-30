@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
-import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
+import { QUERY_BLOGS } from "../utils/queries";
 
 const Home = () => {
   // const { data: userData } = useQuery(QUERY_ME_BASIC);
@@ -28,18 +28,25 @@ const Home = () => {
       <>
       <Row className="sectionTopRow">
           <Col>
-            <Button href="/profile" className="AuthBtn">My Profile
+          <Link to="/profile">
+            <Button className="AuthBtn">My Profile
             </Button>
-          <Button href="/create" className="AuthBtn">Create Blog
+          </Link>
+          <Link to="/create">
+          <Button className="AuthBtn">Create Blog
           </Button>
+          </Link>
           </Col>
           <Col>
         <h3 className="text-center sectionHead">Recent Blogs</h3>
           </Col>
           <Col>
-            <Button href="/" className="AuthBtn" onClick={logout}>            
+          <Link to="/">
+            <Button className="AuthBtn" onClick={logout}>            
                 Log Out
             </Button>
+          </Link>
+            
         </Col>       
         </Row>
         
@@ -49,15 +56,19 @@ const Home = () => {
 
       <Row className="sectionTopRow">
           <Col>
-            <Button href="/signup" className="AllBtn HomeBtn">Sign Up
+          <Link to="/signup">
+            <Button className="AllBtn HomeBtn">Sign Up
             </Button>
+          </Link>
           </Col>
           <Col>
             <h3 className="text-center sectionHead">Recent Blogs</h3>
           </Col>
           <Col>
-            <Button href="/login" className="AllBtn HomeBtn">Log In
+          <Link to="/login">
+            <Button className="AllBtn HomeBtn">Log In
             </Button>
+          </Link>
           </Col>
       </Row>
           </>

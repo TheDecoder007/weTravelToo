@@ -9,7 +9,6 @@ import { useQuery } from "@apollo/client";
 import { QUERY_BLOG } from "../utils/queries";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card"
 
 const SingleBlog = (props) => {
@@ -28,12 +27,12 @@ const SingleBlog = (props) => {
   return (
     <Container fluid className="projectCont">
       <Row className="sectionTopRow">
-      <h3 className="text-center sectionHead">{blog.username}</h3>
+      <h3 className="text-center sectionHead">{blog.blogTitle}</h3>
     </Row>
     <Row className="singleCardRow">
       <Card className="singleCard">
         <Card.Header className="cardHeader">
-        <Link className="cardLink" to={`/profile/${blog.username}`} style={{ fontWeight: 700 }}>
+        <Link to={`/profile/${blog.username}`}  className="cardLink" style={{ fontWeight: 700 }}>
             {blog.username} blogged on {blog.createdAt}
           </Link>
         </Card.Header>
@@ -57,15 +56,16 @@ const SingleBlog = (props) => {
 
           <CommentForm />
       </Container>
-
-          <Button href="/" className="AllBtn ">Go Home
-            {/* <Link className="BtnLink" to="/">Go Home</Link> */}
+        <Link to="/">
+          <Button className="AllBtn ">Go Home
           </Button>
+        </Link>
         </>
       ) : (
-        <Button href="/" className="AllBtn ">Go Home
-          {/* <Link className="BtnLink" to="/">Go Home</Link> */}
+        <Link to="/">
+        <Button className="AllBtn ">Go Home
         </Button>
+        </Link>
       )}
       </Container>
   );

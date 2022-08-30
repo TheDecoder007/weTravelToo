@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
-import Container from "react-bootstrap/Container";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
 import { QUERY_BLOGS, QUERY_ME, QUERY_COMMENTS } from '../../utils/queries';
@@ -15,15 +14,12 @@ const CommentForm = () => {
     commentBody: ""
    
   });
-  const [characterCount, setCharacterCount] = useState(0);
-
   const { commentBody } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
   const [addComment, { error }] = useMutation(ADD_COMMENT, {
     update(cache, { data: { addComment } }) {
 
-  
       // update thought array's cache
       const { comments } = cache.readQuery({ query: QUERY_BLOGS });
       cache.writeQuery({
@@ -36,7 +32,6 @@ console.log(commentBody, "commenetsdfsd")
   const handleChange = (event) => {
     if (event.target.value.length <= 140) {
         setFormState(event.target.value);
-        setCharacterCount(event.target.value.length);
       }
       if (!event.target.value.length) {
         setErrorMessage(`${event.target.name} is required.`);
@@ -52,14 +47,13 @@ console.log(commentBody, "commenetsdfsd")
     event.preventDefault();
 console.log(commentBody,"Commented")
     try {
-      // add thought to database
+      // add comment to database
       await addComment({
         variables: { commentBody },
       });
 
       // clear form value
       setFormState("");
-      setCharacterCount(0);
     } catch (e) {
       console.error(e);
     }
@@ -86,7 +80,9 @@ console.log(commentBody,"Commented")
       name="commentBody"
       defaultValue={commentBody}
       onChange={handleChange}
-      rows="3" />
+      rows="3"
+      maxLength="140"
+      />
     </InputGroup>
       </Col>
       </Row>

@@ -5,3 +5,14 @@
 #video{
     padding: 0px;
 }
+.heroRow {
+    justify-content: center;
+}
+
+.Logo {
+    position: relative;
+    height: 25%;
+    width: 75%;
+    margin-bottom: -340px;
+    padding-top: 10px;
+}

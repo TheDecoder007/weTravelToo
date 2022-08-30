@@ -20,10 +20,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup"
 import Profile from "./Pages/Profile";
 import SingleBlog from "./Pages/SingleBlog";
-import Team from "./Pages/Team";
 import NoMatch from "./Pages/NoMatch";
 import CreateBlog from "./Pages/CreateBlog";
-import BlogForm from "./components/BlogForm";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -53,9 +51,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Container fluid className="mainContainer">
       <Hero />
     <Router>
-      <Container fluid className="mainContainer">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -72,9 +70,9 @@ function App() {
 
             <Route path="*" element={<NoMatch />} />
           </Routes>
-        </Container>
     </Router>
         <PageFooter />
+        </Container>
   </ApolloProvider>
   
     );

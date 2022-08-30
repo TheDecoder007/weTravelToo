@@ -8,13 +8,6 @@
     margin: 10px;
 }
 
-.FormBtn:hover {
-    color: navy;
-    background-color: var(--primary-color);
-    border-color: navy;
-    box-shadow: 0 0 10px var(--primary-color);
-}
-
 .formText {
     background-color: aliceblue;
     color: navy;
@@ -23,4 +16,7 @@
 .error-text {
     color: navy;
     font-size: large;
+}
+.formHead {
+    color: navy;
 }

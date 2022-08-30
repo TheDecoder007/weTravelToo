@@ -3,7 +3,6 @@ import './style.css';
 import { useMutation } from "@apollo/client";
 import { ADD_BLOG } from "../../utils/mutations";
 import { QUERY_BLOGS, QUERY_ME } from '../../utils/queries';
-// import { validateEmail } from "../../assets/utils/helpers";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -11,7 +10,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
-// import Nav from "react-bootstrap/Nav";
 
 
 const BlogForm = () => {
@@ -21,7 +19,6 @@ const BlogForm = () => {
     body: "",
     img: "",
   });
-  const [characterCount, setCharacterCount] = useState(0);
 
   const { title, description, body } = formState;
   const [errorMessage, setErrorMessage] = useState("");
@@ -53,7 +50,6 @@ const BlogForm = () => {
   const handleChange = (event) => {
     if (event.target.value.length <= 140) {
         setFormState(event.target.value);
-        setCharacterCount(event.target.value.length);
       }
       if (!event.target.value.length) {
         setErrorMessage(`${event.target.name} is required.`);
@@ -71,12 +67,11 @@ const BlogForm = () => {
     try {
       // add thought to database
       await addBlog({
-        variables: { title, description, body },
+        variables: { title, description, body, },
       });
 
       // clear form value
       setFormState("");
-      setCharacterCount(0);
     } catch (e) {
       console.error(e);
     }
@@ -100,21 +95,14 @@ const BlogForm = () => {
   }
 
   return (
-    // <Container
-    //   style={{
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-    <div>
-
-      <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>
-      <Row className="sectionTopRow">
-        <h3 className="text-center sectionHead">Write Your Blog</h3>
-        </Row>
+    <Container fluid className="CreateCont"
+   
+    >
+      <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>    
+      <br/>
         <Row>
           <Col>
+        <h4 className="formHead">Title</h4>
             <Form.Control
               className="formBack"
               type="text"
@@ -126,27 +114,26 @@ const BlogForm = () => {
           <br/>
           </Col>
         </Row>
-        {/* <InputGroup> */}
-          {/* <InputGroup.Text className="formText">Description</InputGroup.Text> */}
+          <h4 className="formHead">Description</h4>
+        <InputGroup>
           <Form.Control
-            // className={`formBack ${characterCount === 140 || error ? "text-error" : ""}`}
-            >
-            {/* Character Count: {characterCount}/140
-            {error && <span className="ml-2">Something went wrong...</span>} */}
-            {/* as="textarea"
+            className="formBack" 
+             as="textarea"
             aria-label="With textarea"
             name="description"
             defaultValue={description}
             onBlur={handleChange}
-            rows="3" */}
-            </Form.Control>
-            
-        {/* </InputGroup> */}
+
+            rows="2"
+            maxLength="140"
+            placeholder="140 characters max"
+            />
+
+        </InputGroup>
+
         <br/>
-        {/* <InputGroup> */}
-        <div>testing input</div>
-        <textarea type="text" maxLength="140"/>
-          {/* <InputGroup.Text className="formText">Your Blog</InputGroup.Text> */}
+        <h4 className="formHead">Your Blog</h4>
+        <InputGroup>
           <Form.Control
           className="formBack"
             as="textarea"
@@ -156,9 +143,13 @@ const BlogForm = () => {
             onBlur={handleChange}
             rows="10"
             />
+
             <img id="uploadedimage" src="">
     </img>
-        {/* </InputGroup> */}
+
+
+        </InputGroup>
+
         {errorMessage && (
           <div>
             <p className="error-text">{errorMessage}</p>
@@ -167,13 +158,14 @@ const BlogForm = () => {
         <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
           Submit
         </Button>
+
         
         <Button className="AllBtn FormBtn" variant="primary" type="submit" onClick={showWidget}>
+
           Upload Photo
         </Button>
       </Form>
-      </div>
-    // </Container>
+     </Container>
   );
 }
 
