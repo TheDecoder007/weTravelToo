@@ -13,20 +13,25 @@ export default function CreateBlog() {
 console.log("cherry")
 
   return (
-    <Container fluid className="projectCont">
+   <Container fluid className="projectCont">
+   
       <Row className="sectionTopRow">
         <Col>
-          <Button className="AllBtn HomeBtn">
-            <Link to="/profile">My Profile</Link>
+            <Link to="/profile">
+          <Button className="AllBtn AuthBtn">
+              My Profile
           </Button>
+              </Link>
         </Col>
         <Col>
           <h3 className="text-center sectionHead">Create a Blog</h3>
         </Col>
         <Col>
-          <Button className="AllBtn HomeBtn">
-            <Link to="/home">Home</Link>
+            <Link to="/">
+          <Button className="AllBtn AuthBtn">
+              Home
           </Button>
+              </Link>
         </Col>
       </Row>
       <BlogForm />

@@ -48,14 +48,27 @@ console.log("bananas")
     <Container fluid className="projectCont" id="blogs">
       <Row className="sectionTopRow">
         <Col>
-          <Button href="/create" className="AuthBtn">Create Blog
+        <Link to="/create">
+          <Button className="AuthBtn">Create Blog
           </Button>
+        </Link>
+          </Col>
+          <Col>
           <h3 className="text-center sectionHead">
             Viewing {userParam ? `${user.username}'s` : "your"} profile.
           </h3>
-          <Button className="AuthBtn">
-            <a href="/" onClick={logout}>Log Out</a>
+          </Col>
+          <Col>
+          <Link to="/">
+          <Button onClick={logout} className="AuthBtn">
+            Log Out
           </Button>
+          </Link>
+          <Link to="/">
+          <Button className="AuthBtn">
+            Go Home
+          </Button>
+          </Link>
         </Col>
       </Row>
       <Row className="CardRow">
