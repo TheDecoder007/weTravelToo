@@ -2,7 +2,6 @@ import React from "react";
 import './style.css';
 import Video from "../../assets/videos/NewHero2.mp4";
 import Row from "react-bootstrap/Row"
-import Container from "react-bootstrap/Container"
 import './style.css'
 import Logo from "../../assets/photos/LogoCropSize.png"
 

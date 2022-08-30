@@ -20,10 +20,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup"
 import Profile from "./Pages/Profile";
 import SingleBlog from "./Pages/SingleBlog";
-import Team from "./Pages/Team";
 import NoMatch from "./Pages/NoMatch";
 import CreateBlog from "./Pages/CreateBlog";
-import BlogForm from "./components/BlogForm";
 
 const httpLink = createHttpLink({
   uri: "/graphql",

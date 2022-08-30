@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
-import Container from "react-bootstrap/Container";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
 import { QUERY_BLOGS, QUERY_ME, QUERY_COMMENTS } from '../../utils/queries';

@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
-import { QUERY_BLOGS, QUERY_ME_BASIC } from "../utils/queries";
+import { QUERY_BLOGS } from "../utils/queries";
 
 const Home = () => {
   // const { data: userData } = useQuery(QUERY_ME_BASIC);

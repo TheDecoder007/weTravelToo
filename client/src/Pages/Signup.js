@@ -89,6 +89,7 @@ const Signup = () => {
             id="email"
             value={formState.email}
             onChange={handleChange}
+          
             />
             </Form.Group> 
         <br/>
