@@ -28,7 +28,7 @@ const SingleBlog = (props) => {
   return (
     <Container fluid className="projectCont">
       <Row className="sectionTopRow">
-      <h3 className="text-center sectionHead">{blog.username}</h3>
+      <h3 className="text-center sectionHead">{blog.blogTitle}</h3>
     </Row>
     <Row className="singleCardRow">
       <Card className="singleCard">
