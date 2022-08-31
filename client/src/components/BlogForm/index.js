@@ -14,13 +14,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 const BlogForm = () => {
   const [formState, setFormState] = useState({
-    title: "",
-    description: "",
-    body: "",
-    img: "",
+    blogTitle: "",
+    blogDescription: "",
+    blogText: "",
+    blogImage: "",
   });
 
-  const { title, description, body } = formState;
+  const { blogTitle, blogDescription, blogText, blogImage } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
   const [addBlog, { error }] = useMutation(ADD_BLOG, {
@@ -67,7 +67,7 @@ const BlogForm = () => {
     try {
       // add thought to database
       await addBlog({
-        variables: { title, description, body, },
+        variables: { blogTitle, blogDescription, blogText, blogImage },
       });
 
       // clear form value
@@ -106,7 +106,7 @@ const BlogForm = () => {
             <Form.Control
               className="formBack"
               type="text"
-              defaultValue={title}
+              defaultValue={blogTitle}
               onBlur={handleChange}
               name="title"
               placeholder="Blog Title"
@@ -121,7 +121,7 @@ const BlogForm = () => {
              as="textarea"
             aria-label="With textarea"
             name="description"
-            defaultValue={description}
+            defaultValue={blogDescription}
             onBlur={handleChange}
 
             rows="2"
@@ -139,12 +139,12 @@ const BlogForm = () => {
             as="textarea"
             aria-label="With textarea"
             name="body"
-            defaultValue={body}
+            defaultValue={blogText}
             onBlur={handleChange}
             rows="10"
             />
 
-            <img id="uploadedimage" src="">
+            <img id="uploadedimage" defaultValue={blogImage} src="">
     </img>
 
 
