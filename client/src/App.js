@@ -62,6 +62,7 @@ function App() {
             <Route path="/create" element={<CreateBlog />} /> 
 
 
+            <Route path="/profile/:username" element={<Profile />} />
             <Route path="/profile" element={<Profile />} />
              
             

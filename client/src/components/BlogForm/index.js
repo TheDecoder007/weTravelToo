@@ -144,7 +144,7 @@ const BlogForm = () => {
             rows="10"
             />
 
-            <img id="uploadedimage" defaultValue={blogImage} src="">
+            <img id="uploadedimage" defaultValue={blogImage} alt={"blog"} src="">
     </img>
 
 
@@ -160,7 +160,7 @@ const BlogForm = () => {
         </Button>
 
         
-        <Button className="AllBtn FormBtn" variant="primary"  onClick={showWidget}>
+        <Button className="AllBtn FormBtn" onClick={showWidget}>
 
           Upload Photo
         </Button>

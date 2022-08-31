@@ -6,7 +6,6 @@ const typeDefs = gql`
     username: String
     email: String
     blogs: [Blog]
-    friends: [User]
   }
 
   type Blog {

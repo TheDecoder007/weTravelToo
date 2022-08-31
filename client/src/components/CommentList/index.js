@@ -19,7 +19,7 @@ const CommentList = ({ comments }) => {
         <Col>
       {comments &&
         comments.map((comment) => (
-          <Card className="commentCard">
+          <Card key={comment._id}className="commentCard">
             <Card.Header>
               <Link className="cardLink"
                 to={`/profile/${comment.username}`}
