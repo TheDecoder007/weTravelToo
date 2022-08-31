@@ -30,7 +30,7 @@ const CommentList = ({ comments }) => {
             </Card.Header>
             <Card.Body>
               <Card.Text>
-                {comment.commentBody} {"// "}
+                {comment.commentBody} {""}
               </Card.Text>
             </Card.Body>
           </Card>

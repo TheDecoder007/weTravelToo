@@ -72,7 +72,7 @@ console.log("bananas")
         </Col>
       </Row>
       <Row className="CardRow">
-        <BlogList blogs={user.blogs} title={`${user.username}'s blogs...`} />
+        <BlogList key={user._id} blogs={user.blogs} title={`${user.username}'s blogs...`} />
       </Row>
     </Container>
   );
