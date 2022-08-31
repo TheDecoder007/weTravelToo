@@ -3,7 +3,7 @@ import './style.css';
 import Video from "../../assets/videos/NewHero2.mp4";
 import Row from "react-bootstrap/Row"
 import './style.css'
-import Logo from "../../assets/photos/LogoCropSize.png"
+import Logo from "../../assets/photos/LogoCrop.png"
 
 const Hero = () => {
   return (

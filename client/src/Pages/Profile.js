@@ -26,9 +26,9 @@ const Profile = (props) => {
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is the logged-in user's
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
-  }
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/profile" />;
+  // }
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -55,7 +55,7 @@ console.log("bananas")
           </Col>
           <Col>
           <h3 className="text-center sectionHead">
-            Viewing {userParam ? `${user.username}'s` : "your"} profile.
+           {userParam ? `${user.username}'s` : "Your"} profile.
           </h3>
           </Col>
           <Col>
