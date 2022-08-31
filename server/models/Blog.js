@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
+const commentSchema= require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const blogSchema = new Schema(
@@ -22,7 +22,9 @@ const blogSchema = new Schema(
     },
     blogText: {
       type: String,
-      required: 'You need to leave a blog!'
+      required: 'You need to leave a blog!',
+      minlength: 1,
+      maxlength: 280
     },
     createdAt: {
       type: Date,
