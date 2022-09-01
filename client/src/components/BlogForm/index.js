@@ -13,17 +13,24 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 
 const BlogForm = () => {
-  const [formState, setFormState] = useState({
-    blogTitle: "",
-    blogDescription: "",
-    blogText: "",
-    blogImage: "",
-  });
+  // const [blogVar, setBlog] = useState({
+  //   blogTitle: "",
+  //   blogDescription: "",
+  //   blogText: "",
+  //   blogImage: ""
+  // });
 
-  const { blogTitle, blogDescription, blogText, blogImage } = formState;
+  const [blogTitle, setTitle] = useState("");
+  const [blogDescription, setDescription] = useState("");
+  const [blogText, setText] = useState("");
+  const [blogImage, setImage] = useState("");
+
+ 
+
+
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addBlog, { error }] = useMutation(ADD_BLOG, {
+  const [addBlog] = useMutation(ADD_BLOG, {
     update(cache, { data: { addBlog } }) {
   
    
@@ -33,10 +40,11 @@ const BlogForm = () => {
           query: QUERY_ME,
           data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
         });
+console.log(me.blogs, "heres me");
         
         
         
-        // update thought array's cache
+        // update blog array's cache
         const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
         cache.writeQuery({
           query: QUERY_BLOGS,
@@ -46,30 +54,39 @@ const BlogForm = () => {
     });
     
     const handleChange = (event) => {
-      if (event.target.value.length <= 140) {
-        setFormState(event.target.value);
+      if (event.target.value.length) {
+        setTitle(event.target.value)
+        setDescription(event.target.value)
+        setText(event.target.value)
+        setImage(event.target.value)
       }
       if (!event.target.value.length) {
         setErrorMessage(`${event.target.name} is required.`);
       } else {
         setErrorMessage("");
       }
-      if (!errorMessage) {
-        setFormState({ ...formState, [event.target.name]: event.target.value });
-      }
+      // if (!errorMessage) {
+      //   setTitle(event.target.value);
+      //   setDescription(event.target.value);
+      //   setText(event.target.value);
+      //   setImage(event.target.value);
+      // }
     }
     
     const handleFormSubmit = async (event) => {
       event.preventDefault();
       
       try {
-        // add thought to database
+        // add blog to database
         await addBlog({
           variables: { blogTitle, blogDescription, blogText, blogImage },
         });
         
         // clear form value
-        setFormState("");
+        setTitle("");
+        setDescription("");
+        setText("");
+        setImage("");
       } catch (e) {
         console.error(e);
       }
@@ -94,7 +111,6 @@ const BlogForm = () => {
 
         // console.log(me, "heres me");
 
-
         return (
           <Container fluid className="CreateCont"
           
@@ -107,8 +123,8 @@ const BlogForm = () => {
             <Form.Control
               className="formBack"
               type="text"
-              defaultValue={blogTitle}
-              onBlur={handleChange}
+              value={blogTitle}
+              onChange={handleChange}
               name="title"
               placeholder="Blog Title"
             />
@@ -122,9 +138,8 @@ const BlogForm = () => {
              as="textarea"
             aria-label="With textarea"
             name="description"
-            defaultValue={blogDescription}
-            onBlur={handleChange}
-
+            value={blogDescription}
+            onChange={handleChange}
             rows="2"
             maxLength="140"
             placeholder="140 characters max"
@@ -140,12 +155,12 @@ const BlogForm = () => {
             as="textarea"
             aria-label="With textarea"
             name="body"
-            defaultValue={blogText}
-            onBlur={handleChange}
+            value={blogText}
+            onChange={handleChange}
             rows="10"
             />
 
-            <img id="uploadedimage" defaultValue={blogImage} alt={"blog"} src="">
+            <img id="uploadedimage" value={blogImage} alt={"blog"} src="">
     </img>
 
 
@@ -156,7 +171,7 @@ const BlogForm = () => {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
+        <Button className="AllBtn FormBtn" type="submit">
           Submit
         </Button>
 

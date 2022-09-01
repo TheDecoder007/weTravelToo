@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export default function CreateBlog() {
 console.log("cherry")
 
-  return (
+return (
    <Container fluid className="projectCont">
    
       <Row className="sectionTopRow">
