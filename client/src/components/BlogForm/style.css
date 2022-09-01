@@ -1,0 +1,22 @@
+
+
+#BlogForm {
+    width: 80%;
+}
+
+.FormBtn {
+    margin: 10px;
+}
+
+.formText {
+    background-color: aliceblue;
+    color: navy;
+}
+
+.error-text {
+    color: navy;
+    font-size: large;
+}
+.formHead {
+    color: navy;
+}

@@ -1,0 +1,143 @@
+:root {
+    --primary-color: skyblue;
+    --secondary-color: white;
+    --background-color: #f6d7b0;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+  }
+
+  .mainContainer {
+    background-color: var(--background-color);
+    text-align: -webkit-center;
+    height: 100%;
+  }
+
+  .AllBtn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0 0 9px var(--primary-color);
+    font-weight: bold;
+    text-align-last: center;
+    padding: 10px;
+   
+  }
+
+  .AllBtn:hover {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    border-color: white;
+    box-shadow: 0 0 10px var(--primary-color);
+    
+  } 
+
+  .sectionHead {
+    font-size: xx-large;
+    /* font-weight: bold; */
+    /* padding-bottom: 15px; */
+    text-shadow: 0 0 3px var(--primary-color);
+    /* border-bottom: 2px solid white; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--background-color);
+}
+
+.sectionTopRow {
+  background-color: navy;
+  align-items: center;
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.CardRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+
+.SignBtn {
+  margin: 10px;
+}
+.HomeBtn {
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px var(--background-color);
+}
+.HomeBtn a {
+  text-decoration: none;
+  color: navy;
+  text-shadow: 0 0 3px white;
+}
+
+.HomeBtn:hover {
+  border-color: navy;
+  box-shadow: 0 0 10px var(--secondary-color);
+  
+}
+
+.cardDiv {
+  display: contents;
+}
+
+.projectCont {
+  padding: 0px;
+}
+
+.singleCardRow {
+  margin: 20px;
+}
+.singleCard {
+  padding: 0px;
+  border: 2px solid navy;
+}
+
+.card-header {
+  background-color: aliceblue;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: navy;
+}
+
+.BtnLink {
+  color: white;
+  text-decoration: none;
+}
+.BtnLink:hover {
+  color: white;
+}
+
+.AuthBtn {
+  background-color: var(--background-color);
+  color: navy;
+  border-radius: 10px;
+  border-color:white;
+  box-shadow: 0 0 9px var(--primary-color);
+  font-weight: bold;
+  text-align-last: center;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* .AuthBtn a {
+  text-decoration: none;
+  color: navy;
+  text-shadow: 0 0 3px white;
+} */
+
+.AuthBtn:hover {
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px white;
+}
+
+.AuthBtn a:hover {
+  color: white;
+  text-shadow: 0 0 2px navy;
+}

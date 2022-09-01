@@ -1,0 +1,56 @@
+
+/* .CardRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.CardCol{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    align-items: center;
+}
+
+ .wholeCard {
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+    margin-bottom: 10px;    
+  }
+
+  .card-body {
+    color: navy;
+    background-color: var(--secondary-color);
+  }
+
+  .cardTitle {
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 1px solid navy;
+    color: navy;
+  }
+
+  .cardFooter {
+    padding-top: 0;
+    border: none;
+    background-color: Var(--secondary-color);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.cardFooter:last-child {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.card-img, .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+ }
+
+ .card-img, .card-img-top {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+ }

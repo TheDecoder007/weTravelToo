@@ -1,0 +1,18 @@
+.Hero {
+    padding: 0px;
+    }
+
+#video{
+    padding: 0px;
+}
+.heroRow {
+    justify-content: center;
+}
+
+.Logo {
+    position: relative;
+    height: 20%;
+    width: 70%;
+    margin-bottom: -340px;
+    padding-top: 10px;
+}
