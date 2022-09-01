@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BlogList from "../components/BlogList";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -12,9 +12,9 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 
-const Profile = (props) => {
+const Profile = () => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 

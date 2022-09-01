@@ -23,7 +23,7 @@ const BlogForm = () => {
   const { blogTitle, blogDescription, blogText, blogImage } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addBlog, { error }] = useMutation(ADD_BLOG, {
+  const [addBlog] = useMutation(ADD_BLOG, {
     update(cache, { data: { addBlog } }) {
   
         // could potentially not exist yet, so wrap in a try/catch

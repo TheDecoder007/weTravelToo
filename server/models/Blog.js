@@ -6,23 +6,23 @@ const blogSchema = new Schema(
   {
     blogTitle: {
       type: String,
-      required: 'You need to leave a blog!',
+      required: true,
       minlength: 1,
-      maxlength: 280
+      // maxlength: 280
     },
     blogDescription: {
       type: String,
-      required: 'You need to leave a blog!',
+      required: true,
       minlength: 1,
       maxlength: 140
     },
     blogImage: {
       type: String,
-      required: 'You need to leave a blog!'
+      required: false
     },
     blogText: {
       type: String,
-      required: 'You need to leave a blog!'
+      required: true
     },
     createdAt: {
       type: Date,
