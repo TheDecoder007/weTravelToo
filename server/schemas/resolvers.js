@@ -24,7 +24,6 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        .populate('comments')
         .populate('blogs');
     },
     blogs: async (parent, { username }) => {
