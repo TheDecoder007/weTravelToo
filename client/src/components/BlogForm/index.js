@@ -13,17 +13,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 
 const BlogForm = () => {
-  const [formState, setFormState] = useState({
-    blogTitle: "",
-    blogDescription: "",
-    blogText: "",
-    blogImage: "",
-  });
+  const [blogVar, setText] = useState("");
 
-  const { blogTitle, blogDescription, blogText, blogImage } = formState;
+  const { blogTitle, blogDescription, blogText, blogImage } = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addBlog, { error }] = useMutation(ADD_BLOG, {
+  const [addBlog] = useMutation(ADD_BLOG, {
     update(cache, { data: { addBlog } }) {
   
    
@@ -33,10 +28,11 @@ const BlogForm = () => {
           query: QUERY_ME,
           data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
         });
+console.log(me.blogs, "heres me");
         
         
         
-        // update thought array's cache
+        // update blog array's cache
         const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
         cache.writeQuery({
           query: QUERY_BLOGS,
@@ -47,7 +43,7 @@ const BlogForm = () => {
     
     const handleChange = (event) => {
       if (event.target.value.length <= 140) {
-        setFormState(event.target.value);
+        setText(event.target.value);
       }
       if (!event.target.value.length) {
         setErrorMessage(`${event.target.name} is required.`);
@@ -55,7 +51,7 @@ const BlogForm = () => {
         setErrorMessage("");
       }
       if (!errorMessage) {
-        setFormState({ ...formState, [event.target.name]: event.target.value });
+        setText( event.target.value);
       }
     }
     
@@ -65,11 +61,11 @@ const BlogForm = () => {
       try {
         // add thought to database
         await addBlog({
-          variables: { blogTitle, blogDescription, blogText, blogImage },
+          variables: { blogVar },
         });
         
         // clear form value
-        setFormState("");
+        setText("");
       } catch (e) {
         console.error(e);
       }
@@ -93,7 +89,6 @@ const BlogForm = () => {
         }
 
         // console.log(me, "heres me");
-
 
         return (
           <Container fluid className="CreateCont"
