@@ -12,5 +12,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/weTravelToo_db'
 });
 
 
-module.exports = mongoose.connection;
+module.exports = mongoose.connection; 
 
