@@ -26,29 +26,27 @@ const BlogForm = () => {
   const [addBlog, { error }] = useMutation(ADD_BLOG, {
     update(cache, { data: { addBlog } }) {
   
-        // could potentially not exist yet, so wrap in a try/catch
-      try {
+   
         // update me array's cache
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
           data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
         });
-      } catch (e) {
-        console.warn("First thought insertion by user!")
+        
+        
+        
+        // update thought array's cache
+        const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
+        cache.writeQuery({
+          query: QUERY_BLOGS,
+          data: { blogs: [addBlog, ...blogs] },
+        });
       }
-  
-      // update thought array's cache
-      const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
-      cache.writeQuery({
-        query: QUERY_BLOGS,
-        data: { blogs: [addBlog, ...blogs] },
-      });
-    }
-  });
-
-  const handleChange = (event) => {
-    if (event.target.value.length <= 140) {
+    });
+    
+    const handleChange = (event) => {
+      if (event.target.value.length <= 140) {
         setFormState(event.target.value);
       }
       if (!event.target.value.length) {
@@ -56,48 +54,51 @@ const BlogForm = () => {
       } else {
         setErrorMessage("");
       }
-    if (!errorMessage) {
-      setFormState({ ...formState, [event.target.name]: event.target.value });
+      if (!errorMessage) {
+        setFormState({ ...formState, [event.target.name]: event.target.value });
+      }
     }
-  }
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      // add thought to database
-      await addBlog({
-        variables: { blogTitle, blogDescription, blogText, blogImage },
-      });
-
-      // clear form value
-      setFormState("");
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-   const showWidget = () => {
     
-    let widget = window.cloudinary.createUploadWidget({ 
-       cloudName: `dfe8l6xnx`,
-       uploadPreset: `weTravel`,
-       sources: [ "local", "url", 'instagram', 'unsplash'],
-       cropping: true}, 
-    (error, result) => {
-      if (!error && result && result.event === "success") { 
-      console.log(result.info.url); 
-      document
-        .getElementById("uploadedimage")
-        .setAttribute("src", result.info.secure_url);
-    }});
-    widget.open()
-  }
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+      
+      try {
+        // add thought to database
+        await addBlog({
+          variables: { blogTitle, blogDescription, blogText, blogImage },
+        });
+        
+        // clear form value
+        setFormState("");
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    
+    const showWidget = () => {
+      
+      let widget = window.cloudinary.createUploadWidget({ 
+        cloudName: `dfe8l6xnx`,
+        uploadPreset: `weTravel`,
+        sources: [ "local", "url", 'instagram', 'unsplash'],
+        cropping: true}, 
+        (error, result) => {
+          if (!error && result && result.event === "success") { 
+            console.log(result.info.url); 
+            document
+            .getElementById("uploadedimage")
+            .setAttribute("src", result.info.secure_url);
+          }});
+          widget.open()
+        }
 
-  return (
-    <Container fluid className="CreateCont"
-   
-    >
+        // console.log(me, "heres me");
+
+
+        return (
+          <Container fluid className="CreateCont"
+          
+          >
       <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>    
       <br/>
         <Row>

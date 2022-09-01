@@ -23,7 +23,7 @@ const SingleBlog = (props) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+console.log(blog.user, "heres blog");
   return (
     <Container fluid className="projectCont">
       <Row className="sectionTopRow">

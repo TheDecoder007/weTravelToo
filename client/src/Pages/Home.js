@@ -8,10 +8,10 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
-import { QUERY_BLOGS, QUERY_ME, QUERY_USER } from "../utils/queries";
+import { QUERY_BLOGS, QUERY_ME, QUERY_USER, QUERY_ME_BASIC } from "../utils/queries";
 
 const Home = () => {
-  // const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data: userData } = useQuery(QUERY_ME_BASIC);
   const { data } = useQuery(QUERY_BLOGS);
   const blogs = data?.blogs || [];
   // const loggedIn = Auth.loggedIn();
@@ -21,7 +21,9 @@ const Home = () => {
     event.preventDefault();
     Auth.logout();
   };
+  const user = data?.me || data?.user || {};
 
+  // console.log(userData.me.username, "heres me");
   return (
     
     <Container fluid className="projectCont" id="blogs">
@@ -29,7 +31,7 @@ const Home = () => {
       <>
       <Row className="sectionTopRow">
           <Col>
-          <Link to={`/profile/${me}`}>
+          <Link to="/profile">
             <Button className="AuthBtn">My Profile
             </Button>
           </Link>
