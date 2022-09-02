@@ -27,11 +27,11 @@ const SingleBlog = (props) => {
     update(cache, { data: { deleteBlog } }) {
 
       // update me array's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
+      const { me }  = cache.readQuery({ query: QUERY_ME });
       cache.modify({
-        id: cache.identify(me),
+        id: cache.identify(me.blogs),
         query: QUERY_ME,
-        data: { me: { ...me, blogs: [...me.blogs, deleteBlog] } },
+        data: { me: { ...me, blogs: [...me.blogs, deleteBlog] } } ,
       });
 console.log(me, "heres ME");
       
@@ -39,9 +39,13 @@ console.log(me, "heres ME");
       // update blog array's cache
       const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
       cache.modify({
-        id: cache.identify(blog._id),
+        id: cache.identify(blogs),
         query: QUERY_BLOGS,
-        data: { blogs: [deleteBlog, ...blogs] },
+        data: {
+          blogs: ( [deleteBlog, ...blogs] ) 
+           
+        }
+        // data: { blogs: [deleteBlog, ...blogs] },
       });
     }
   });
