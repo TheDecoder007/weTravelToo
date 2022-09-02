@@ -12,177 +12,138 @@ import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
 
 
+
+
 const BlogForm = () => {
-  // const [blogVar, setBlog] = useState({
-  //   blogTitle: "",
-  //   blogDescription: "",
-  //   blogText: "",
-  //   blogImage: ""
-  // });
-
-  const [blogTitle, setTitle] = useState("");
-  const [blogDescription, setDescription] = useState("");
-  const [blogText, setText] = useState("");
-  const [blogImage, setImage] = useState("");
-
- 
-
-
+  const [formState, setFormState] = useState({
+    blogTitle: "",
+    blogDescription: "",
+    blogText: "",
+    blogImage: "",
+  });
+  const [addBlog, { error }] = useMutation(ADD_BLOG);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addBlog] = useMutation(ADD_BLOG, {
-    update(cache, { data: { addBlog } }) {
-  
-   
-        // update me array's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
-        });
-console.log(me.blogs, "heres me");
-        
-        
-        
-        // update blog array's cache
-        const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
-        cache.writeQuery({
-          query: QUERY_BLOGS,
-          data: { blogs: [addBlog, ...blogs] },
-        });
-      }
-    });
-    
-    const handleChange = (event) => {
-      if (event.target.value.length) {
-        setTitle(event.target.value)
-        setDescription(event.target.value)
-        setText(event.target.value)
-        setImage(event.target.value)
-      }
-      if (!event.target.value.length) {
-        setErrorMessage(`${event.target.name} is required.`);
-      } else {
-        setErrorMessage("");
-      }
-      // if (!errorMessage) {
-      //   setTitle(event.target.value);
-      //   setDescription(event.target.value);
-      //   setText(event.target.value);
-      //   setImage(event.target.value);
-      // }
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (!event.target.value) {
+      setErrorMessage(`${event.target.name} is required.`);
+    } else {
+      setErrorMessage("");
     }
-    
-    const handleFormSubmit = async (event) => {
-      event.preventDefault();
-      
-      try {
-        // add blog to database
-        await addBlog({
-          variables: { blogTitle, blogDescription, blogText, blogImage },
-        });
-        
-        // clear form value
-        setTitle("");
-        setDescription("");
-        setText("");
-        setImage("");
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    
-    const showWidget = () => {
-      
-      let widget = window.cloudinary.createUploadWidget({ 
-        cloudName: `dfe8l6xnx`,
-        uploadPreset: `weTravel`,
-        sources: [ "local", "url", 'instagram', 'unsplash'],
-        cropping: true}, 
-        (error, result) => {
-          if (!error && result && result.event === "success") { 
-            console.log(result.info.url); 
-            document
-            .getElementById("uploadedimage")
-            .setAttribute("src", result.info.secure_url);
-          }});
-          widget.open()
-        }
+    if (!errorMessage) {
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    }
+  };
 
-        // console.log(me, "heres me");
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-        return (
-          <Container fluid className="CreateCont"
-          
-          >
-      <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>    
-      <br/>
-        <Row>
-          <Col>
-        <h4 className="formHead">Title</h4>
+    try {
+      const { data } = await addBlog({
+        variables: { ...formState },
+      });
+
+      
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const showWidget = () => {
+    
+    let widget = window.cloudinary.createUploadWidget({ 
+       cloudName: `dfe8l6xnx`,
+       uploadPreset: `weTravel`,
+       sources: [ "local", "url", 'instagram', 'unsplash'],
+       cropping: true}, 
+    (error, result) => {
+      if (!error && result && result.event === "success") { 
+      console.log(result.info.url); 
+      document
+        .getElementById("uploadedimage")
+        .setAttribute("src", result.info.secure_url);
+    }});
+    widget.open()
+  }
+
+  return (
+<Container fluid className="CreateCont"
+
+      >
+        <Form id="BlogForm" onSubmit={handleFormSubmit} >
+          <br />
+          <Row>
+            <Col>
+              <h4 className="formHead">Title</h4>
+              <input
+                className="formBack"
+                placeholder="Blog Title"
+                name="blogTitle"
+                type="blogTitle"
+                value={formState.blogTitle}
+                onChange={handleChange}
+              />
+              <br />
+            </Col>
+          </Row>
+          <h4 className="formHead">Description</h4>
+          <InputGroup>
             <Form.Control
               className="formBack"
-              type="text"
-              value={blogTitle}
+              as="textarea"
+              aria-label="With textarea"
+              name="blogDescription"
+              rows="2"
+              maxLength="140"
+              placeholder="140 characters max"
+              value={formState.blogDescription}
               onChange={handleChange}
-              name="title"
-              placeholder="Blog Title"
-            />
-          <br/>
-          </Col>
-        </Row>
-          <h4 className="formHead">Description</h4>
-        <InputGroup>
-          <Form.Control
-            className="formBack" 
-             as="textarea"
-            aria-label="With textarea"
-            name="description"
-            value={blogDescription}
-            onChange={handleChange}
-            rows="2"
-            maxLength="140"
-            placeholder="140 characters max"
             />
 
-        </InputGroup>
+          </InputGroup>
 
-        <br/>
-        <h4 className="formHead">Your Blog</h4>
-        <InputGroup>
-          <Form.Control
-          className="formBack"
-            as="textarea"
-            aria-label="With textarea"
-            name="body"
-            value={blogText}
-            onChange={handleChange}
-            rows="10"
+          <br />
+          <h4 className="formHead">Your Blog</h4>
+          <InputGroup>
+            <Form.Control
+              className="formBack"
+              as="textarea"
+              aria-label="With textarea"
+              name="blogText"
+              value={formState.blogText}
+              onChange={handleChange}
+              rows="10"
             />
 
-            <img id="uploadedimage" value={blogImage} alt={"blog"} src="">
-    </img>
+            <img id="uploadedimage" name="blogImage" value={formState.blogImage} alt={"blog"} src="">
+            </img>
 
 
-        </InputGroup>
+          </InputGroup>
 
-        {errorMessage && (
-          <div>
-            <p className="error-text">{errorMessage}</p>
-          </div>
-        )}
-        <Button className="AllBtn FormBtn" type="submit">
-          Submit
-        </Button>
+          {errorMessage && (
+            <div>
+              <p className="error-text">{errorMessage}</p>
+            </div>
+          )}
+          <Button className="AllBtn FormBtn" type="submit">
+            Submit
+          </Button>
 
-        
-        <Button className="AllBtn FormBtn" onClick={showWidget}>
 
-          Upload Photo
-        </Button>
-      </Form>
-     </Container>
+          <Button className="AllBtn FormBtn" onClick={showWidget}>
+
+            Upload Photo
+          </Button>
+        </Form>
+      </Container>
   );
-}
+};
 
 export default BlogForm;
