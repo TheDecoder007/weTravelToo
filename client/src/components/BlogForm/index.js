@@ -10,9 +10,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
-
-
-
+import { Link } from "react-router-dom";
 
 const BlogForm = () => {
   const [formState, setFormState] = useState({
@@ -21,8 +19,31 @@ const BlogForm = () => {
     blogText: "",
     blogImage: "",
   });
-  const [addBlog, { error }] = useMutation(ADD_BLOG);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [addBlog] = useMutation(ADD_BLOG, {
+    update(cache, { data: { addBlog } }) {
+
+          // update me array's cache
+          const { me } = cache.readQuery({ query: QUERY_ME });
+          cache.writeQuery({
+            query: QUERY_ME,
+            data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
+          });
+  console.log(me.blogs, "heres me");
+          
+          
+          
+          // update blog array's cache
+          const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
+          cache.writeQuery({
+            query: QUERY_BLOGS,
+            data: { blogs: [addBlog, ...blogs] },
+          });
+        }
+      });
+
+
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -45,11 +66,15 @@ const BlogForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addBlog({
+       await addBlog({
         variables: { ...formState },
       });
 
-      
+      setFormState({ 
+        blogTitle: "",
+        blogDescription: "",
+        blogText: "",
+        blogImage: "", });
     } catch (e) {
       console.error(e);
     }
@@ -83,11 +108,12 @@ const BlogForm = () => {
           <Row>
             <Col>
               <h4 className="formHead">Title</h4>
-              <input
+              <Form.Control
                 className="formBack"
-                placeholder="Blog Title"
+                placeholder="26 characters max"
                 name="blogTitle"
                 type="blogTitle"
+                maxLength="26"
                 value={formState.blogTitle}
                 onChange={handleChange}
               />
@@ -102,8 +128,8 @@ const BlogForm = () => {
               aria-label="With textarea"
               name="blogDescription"
               rows="2"
-              maxLength="140"
-              placeholder="140 characters max"
+              maxLength="100"
+              placeholder="100 characters max"
               value={formState.blogDescription}
               onChange={handleChange}
             />
@@ -122,14 +148,9 @@ const BlogForm = () => {
               onChange={handleChange}
               rows="10"
             />
-          </InputGroup>
 
-          <InputGroup>
-
-            <img id="uploadedimage" name="blogImage"  alt={"blog"} src="">
+            <img id="uploadedimage" name="blogImage"  placeholder="" alt={""} src="">
             </img>
-
-            
 
           </InputGroup>
 
@@ -139,13 +160,14 @@ const BlogForm = () => {
               <p className="error-text">{errorMessage}</p>
             </div>
           )}
-          <Button className="AllBtn FormBtn" type="submit">
-            Submit
+          {/* <Link to="/" > */}
+          <Button className="AllBtn FormBtn" type="submit" onClick={handleFormSubmit}>
+            Create Blog
           </Button>
+          {/* </Link> */}
 
 
-          <Button className="AllBtn FormBtn" onClick={showWidget}>
-
+          <Button className="AllBtn FormBtn" type="button" onClick={showWidget}>
             Upload Photo
           </Button>
         </Form>

@@ -1,8 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
 import BlogForm from "../components/BlogForm";
-import Auth from "../utils/auth";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

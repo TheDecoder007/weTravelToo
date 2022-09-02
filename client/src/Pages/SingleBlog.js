@@ -13,7 +13,6 @@ import Card from "react-bootstrap/Card"
 
 const SingleBlog = (props) => {
   const { id: blogId } = useParams();
-  // const { Title: blogTitle} = blog.blogTitle;
   const { loading, data } = useQuery(QUERY_BLOG, {
     variables: { id: blogId },
   });
