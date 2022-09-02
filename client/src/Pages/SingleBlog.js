@@ -11,7 +11,27 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card"
 
+import { useMutation } from "@apollo/client";
+import { DELETE_BLOG } from "../../utils/mutations";
+
+
 const SingleBlog = (props) => {
+  const [deleteBlog, { error }] = useMutation(DELETE_BLOG);
+
+  const handleFormSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const { data } = await deleteBlog({
+          variables: { ...formState },
+        });
+  
+        
+      } catch (e) {
+        console.error(e);
+      }
+    };
+  
   const { id: blogId } = useParams();
   const { loading, data } = useQuery(QUERY_BLOG, {
     variables: { id: blogId },
@@ -41,6 +61,14 @@ console.log(blog.user, "heres blog");
       </Card>
     </Row>
 <br/>
+
+{Auth.loggedIn() ? (
+<>
+        
+        <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
+            Delete Blog
+          </Button>
+)
       <CommentList comments={blog.comments} />
       <br/>
       {Auth.loggedIn() ? (

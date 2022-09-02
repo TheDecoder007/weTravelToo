@@ -57,3 +57,21 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_BLOG = gql`
+mutation deleteBlog($blogTitle: String!, $blogDescription: String!, $blogImage: String!, $blogText: String! ) {
+  deleteBlog(blogTitle: $blogTitle, blogDescription: $blogDescription, blogImage: $blogImage, blogText: $blogText) {
+    _id
+    blogTitle
+    blogDescription
+    blogImage
+    blogText
+    createdAt
+    username
+    commentCount
+    comments {
+      _id
+    }
+  }
+}
+`;

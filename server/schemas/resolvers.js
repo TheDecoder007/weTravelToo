@@ -87,7 +87,20 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    
+    deleteBlog: async (parent, args, context) => {
+      if (context.user) {
+        const blog = await Blog.remove({ ...args, username: context.user.username });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { blogs: blog._id } },
+
+          { new: true }
+        );
+
+      }
+  },
+
   }
 };
 
