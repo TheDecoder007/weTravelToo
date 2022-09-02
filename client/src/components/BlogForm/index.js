@@ -65,9 +65,11 @@ const BlogForm = () => {
     (error, result) => {
       if (!error && result && result.event === "success") { 
       console.log(result.info.url); 
+      formState.blogImage = result.info.url;
       document
         .getElementById("uploadedimage")
         .setAttribute("src", result.info.secure_url);
+        
     }});
     widget.open()
   }
@@ -120,12 +122,17 @@ const BlogForm = () => {
               onChange={handleChange}
               rows="10"
             />
+          </InputGroup>
 
-            <img id="uploadedimage" name="blogImage" value={formState.blogImage} alt={"blog"} src="">
+          <InputGroup>
+
+            <img id="uploadedimage" name="blogImage"  alt={"blog"} src="">
             </img>
 
+            
 
           </InputGroup>
+
 
           {errorMessage && (
             <div>
