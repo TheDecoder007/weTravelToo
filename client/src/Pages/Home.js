@@ -74,7 +74,7 @@ const Home = () => {
       )}
 
       <Row className="CardRow">
-        <BlogList blogs={blogs} title="Some Feed for Blog(s)..." />
+        <BlogList blogs={blogs} />
       </Row>
     </Container>
   );

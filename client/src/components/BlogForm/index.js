@@ -30,10 +30,7 @@ const BlogForm = () => {
             query: QUERY_ME,
             data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
           });
-  console.log(me.blogs, "heres me");
-          
-          
-          
+
           // update blog array's cache
           const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
           cache.writeQuery({
@@ -42,8 +39,7 @@ const BlogForm = () => {
           });
         }
       });
-
-
+      
 
   // update state based on form input changes
   const handleChange = (event) => {

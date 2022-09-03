@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-import { QUERY_BLOGS, QUERY_ME, QUERY_COMMENTS } from '../../utils/queries';
+import { QUERY_BLOGS, QUERY_ME } from '../../utils/queries';
 import "./style.css";
 
 const CommentForm = () => {
@@ -28,7 +28,8 @@ const CommentForm = () => {
       });
     }
   });
-console.log(commentBody, "commenetsdfsd")
+console.log(commentBody, "commentBody")
+
   const handleChange = (event) => {
     if (event.target.value.length <= 140) {
         setFormState(event.target.value);
@@ -45,7 +46,9 @@ console.log(commentBody, "commenetsdfsd")
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
 console.log(commentBody,"Commented")
+
     try {
       // add comment to database
       await addComment({
@@ -62,13 +65,6 @@ console.log(commentBody,"Commented")
   return (
 <div>
 
-  {/* //   <Container */}
-  {/* //   style={{
-    //     display: "flex",
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //   }}
-  // > */}
   <Row>
   <Col className="commentForm">
   <InputGroup>
@@ -95,7 +91,6 @@ console.log(commentBody,"Commented")
 </Row>
   <br/>
     </div>
-    // {/* </Container> */}
     );
   };
 

@@ -91,15 +91,25 @@ const resolvers = {
       if (context.user) {
         const blog = await Blog.deleteOne({ ...args, username: context.user.username });
 
-        await User.findByIdAndUpdate(
+        await Blog.findByIdAndUpdate(
           { _id: context.user._id },
           { $pull: { blogs: blog._id } },
 
           { new: true }
         );
-
       }
   },
+
+  // deleteBlog: async (parent, context) => {
+  //     if (context.user) {
+  //   const updatedUser = await User.findOneAndUpdate(
+  //     { _id: context.user._id },
+  //     { $pull: { blogs: blog._id } },
+  //     { new: true }
+  //   )
+  //   return updatedUser;
+  //     }
+  // },
 
   }
 };
