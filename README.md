@@ -130,7 +130,7 @@ Distributed under the MIT License.
 
 ## Links
 
-* Github Repo: https://github.com/TheDecoder007
+* Github Repo: https://github.com/TheDecoder007/weTravelToo
 
 * Deploy Link: Undeployed at the moment. Will Update
 
