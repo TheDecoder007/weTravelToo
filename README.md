@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+<div id="top"></div>
+<div align="center">
+ 
+  <h1 align="center">We Travel Too</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    24. Interactive MERN SPA Project 3
+    <br />
+    <a href="https://github.com/TheDecoder007/weTravelToo"><strong>Github</strong></a>
+  </p>
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Heroku</strong></a>
+  </p>
+</div>
 
-## Available Scripts
+<a href="https://docs.google.com/presentation/d/14cvW3UxNp38X0EqmcmSzbEp1ul1wJHN7K1N5rhPtNpM/edit#slide=id.p"><strong>Google Slides</strong></a>
 
-In the project directory, you can run:
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<summary>Table of Contents</summary>
+  <ol>
+    <li>
+    <a href="#about-the-project">About The Project</a>
+      <ul>
+<li>
+    <a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+    <a href="#getting-started">Getting Started</a>
+      <ul>
+<li>
+    <a href="#prerequisites">Prerequisites</a></li>
+<li>
+    <a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+<li>
+    <a href="#license">License</a></li>
+<li>
+    <a href="#contact">Contact</a></li>
+<li>
+    <a href="#links">Links</a></li>
+  </ol>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* WeTravelToo is a remake of WeTravel, this time using the full MERN stack. Its a travel blog site, where users can post an image and a blog about thier destinations. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use the `BLANK_README.md` to get started.
 
-### `npm run eject`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+<br>
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+<br>
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+<br>
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Cloudinary
+* React-Bootstrap
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Learn More
+<!-- GETTING STARTED -->
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In your main folder of the downloaded project, enter the following in the command line to download all neccessary dependencies.
+* npm
+  ```sh
+  npm install npm i
+  ```
 
-### Code Splitting
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-### Analyzing the Bundle Size
+1. Clone the repo
+   ```sh
+   git clone https://github.com/TheDecoder007/weTravelToo
+   ```
+2. Install NPM packages
+   ```sh
+   npm init -y then npm install i
+   ```
+3. Start the application
+   ```js
+   npm run develop
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- LICENSE -->
+## License
 
-### Deployment
+Distributed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run build` fails to minify
+<!-- CONTACT -->
+## Contact the contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://github.com/TheDecoder007"><strong>Ryan Murphy</strong></a>
+
+<a href="https://github.com/dallas1a"><strong>Dallas Bailey</strong></a>
+
+<a href="https://github.com/PWiernasz"><strong>Peter Weirnasz</strong></a>
+
+<a href="https://github.com/pgomet"><strong>Pina Gomet</strong></a>
+
+<a href="https://github.com/PhilemonKirlles"><strong>Philemon AbdEllah</strong></a>
+
+<a href="https://github.com/LKocaj"><strong>Lawrence Kocaj</strong></a>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Links
+
+* Github Repo: https://github.com/TheDecoder007/weTravelToo
+
+* Deploy Link: Undeployed at the moment. Will Update
+
+ScreenShot: ![Screenshot (963)](https://user-images.githubusercontent.com/101135574/188277257-42ef80e5-fb75-44fa-9d14-408213010596.png)

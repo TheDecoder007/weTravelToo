@@ -45,4 +45,4 @@ db.once('open', () => {
 };
 
 // Call the async function to start the server
-startApolloServer(typeDefs, resolvers);
+startApolloServer(typeDefs, resolvers); 

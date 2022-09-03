@@ -88,7 +88,7 @@ const Login = (props) => {
         </Form.Group>
         <br />
         <Button className="AllBtn SignBtn" type="submit">
-          Submit
+          Log In
         </Button>
         <Link to="/">
         <Button className="AllBtn SignBtn">

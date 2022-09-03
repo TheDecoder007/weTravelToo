@@ -111,7 +111,7 @@ const Signup = () => {
           </div>
         )}
         <Button className="AllBtn SignBtn" type="submit">
-          Submit
+          Sign Up!
         </Button>
         <Link to="/">
         <Button className="AllBtn SignBtn">Go Back
