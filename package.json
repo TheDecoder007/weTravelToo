@@ -21,7 +21,7 @@
     "bugs": {
         "url": "https://github.com/TheDecoder007/weTravelToo/issues"
     },
-    "homepage": "https://github.com/TheDecoder007/weTravelToo#readme",
+    "homepage": "https://we-travel-too02.herokuapp.com/",
     "devDependencies": {
         "concurrently": "^7.3.0"
     },
