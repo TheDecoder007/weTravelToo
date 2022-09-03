@@ -63,7 +63,7 @@ function App() {
 
 
             <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/" element={<Profile />} />
              
             
             {/* not sure if this is right, or should be /SingleBlog/:id */}
