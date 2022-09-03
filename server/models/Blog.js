@@ -6,19 +6,19 @@ const blogSchema = new Schema(
   {
     blogTitle: {
       type: String,
-      required: 'You need to leave a blog!',
+      required: 'You need to leave a title!',
       minlength: 1,
       maxlength: 280
     },
     blogDescription: {
       type: String,
-      required: 'You need to leave a blog!',
+      required: 'You need to leave a description!',
       minlength: 1,
       maxlength: 140
     },
     blogImage: {
       type: String,
-      required: 'You need to leave a blog!'
+      required: 'You need to upload an image!'
     },
     blogText: {
       type: String,
