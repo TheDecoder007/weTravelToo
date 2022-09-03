@@ -10,7 +10,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
-
+import { Link } from "react-router-dom";
 
 const BlogForm = () => {
   const [formState, setFormState] = useState({
@@ -19,65 +19,64 @@ const BlogForm = () => {
     blogText: "",
     blogImage: "",
   });
-
-  const { blogTitle, blogDescription, blogText, blogImage } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addBlog, { error }] = useMutation(ADD_BLOG, {
+  const [addBlog] = useMutation(ADD_BLOG, {
     update(cache, { data: { addBlog } }) {
-  
-        // could potentially not exist yet, so wrap in a try/catch
-      try {
-        // update me array's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
-        });
-      } catch (e) {
-        console.warn("First thought insertion by user!")
-      }
-  
-      // update thought array's cache
-      const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
-      cache.writeQuery({
-        query: QUERY_BLOGS,
-        data: { blogs: [addBlog, ...blogs] },
+
+          // update me array's cache
+          const { me } = cache.readQuery({ query: QUERY_ME });
+          cache.writeQuery({
+            query: QUERY_ME,
+            data: { me: { ...me, blogs: [...me.blogs, addBlog] } },
+          });
+
+          // update blog array's cache
+          const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
+          cache.writeQuery({
+            query: QUERY_BLOGS,
+            data: { blogs: [addBlog, ...blogs] },
+          });
+        }
+      });
+      
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (!event.target.value) {
+      setErrorMessage(`${event.target.name} is required.`);
+    } else {
+      setErrorMessage("");
+    }
+    if (!errorMessage) {
+      setFormState({
+        ...formState,
+        [name]: value,
       });
     }
-  });
+  };
 
-  const handleChange = (event) => {
-    if (event.target.value.length <= 140) {
-        setFormState(event.target.value);
-      }
-      if (!event.target.value.length) {
-        setErrorMessage(`${event.target.name} is required.`);
-      } else {
-        setErrorMessage("");
-      }
-    if (!errorMessage) {
-      setFormState({ ...formState, [event.target.name]: event.target.value });
-    }
-  }
-
+  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // add thought to database
-      await addBlog({
-        variables: { blogTitle, blogDescription, blogText, blogImage },
+       await addBlog({
+        variables: { ...formState },
       });
 
-      // clear form value
-      setFormState("");
+      setFormState({ 
+        blogTitle: "",
+        blogDescription: "",
+        blogText: "",
+        blogImage: "", });
     } catch (e) {
       console.error(e);
     }
   };
 
-   const showWidget = () => {
+  const showWidget = () => {
     
     let widget = window.cloudinary.createUploadWidget({ 
        cloudName: `dfe8l6xnx`,
@@ -87,86 +86,89 @@ const BlogForm = () => {
     (error, result) => {
       if (!error && result && result.event === "success") { 
       console.log(result.info.url); 
+      formState.blogImage = result.info.url;
       document
         .getElementById("uploadedimage")
         .setAttribute("src", result.info.secure_url);
+        
     }});
     widget.open()
   }
 
   return (
-    <Container fluid className="CreateCont"
-   
-    >
-      <Form id="BlogForm" onSubmit={handleFormSubmit} style={{}}>    
-      <br/>
-        <Row>
-          <Col>
-        <h4 className="formHead">Title</h4>
+<Container fluid className="CreateCont"
+
+      >
+        <Form id="BlogForm" onSubmit={handleFormSubmit} >
+          <br />
+          <Row>
+            <Col>
+              <h4 className="formHead">Title</h4>
+              <Form.Control
+                className="formBack"
+                placeholder="26 characters max"
+                name="blogTitle"
+                type="blogTitle"
+                maxLength="26"
+                value={formState.blogTitle}
+                onChange={handleChange}
+              />
+              <br />
+            </Col>
+          </Row>
+          <h4 className="formHead">Description</h4>
+          <InputGroup>
             <Form.Control
               className="formBack"
-              type="text"
-              defaultValue={blogTitle}
-              onBlur={handleChange}
-              name="title"
-              placeholder="Blog Title"
-            />
-          <br/>
-          </Col>
-        </Row>
-          <h4 className="formHead">Description</h4>
-        <InputGroup>
-          <Form.Control
-            className="formBack" 
-             as="textarea"
-            aria-label="With textarea"
-            name="description"
-            defaultValue={blogDescription}
-            onBlur={handleChange}
-
-            rows="2"
-            maxLength="140"
-            placeholder="140 characters max"
+              as="textarea"
+              aria-label="With textarea"
+              name="blogDescription"
+              rows="2"
+              maxLength="100"
+              placeholder="100 characters max"
+              value={formState.blogDescription}
+              onChange={handleChange}
             />
 
-        </InputGroup>
+          </InputGroup>
 
-        <br/>
-        <h4 className="formHead">Your Blog</h4>
-        <InputGroup>
-          <Form.Control
-          className="formBack"
-            as="textarea"
-            aria-label="With textarea"
-            name="body"
-            defaultValue={blogText}
-            onBlur={handleChange}
-            rows="10"
+          <br />
+          <h4 className="formHead">Your Blog</h4>
+          <InputGroup>
+            <Form.Control
+              className="formBack"
+              as="textarea"
+              aria-label="With textarea"
+              name="blogText"
+              value={formState.blogText}
+              onChange={handleChange}
+              rows="10"
             />
 
-            <img id="uploadedimage" defaultValue={blogImage} alt={"blog"} src="">
-    </img>
+            <img id="uploadedimage" name="blogImage"  placeholder="" alt={""} src="">
+            </img>
+
+          </InputGroup>
 
 
-        </InputGroup>
+          {errorMessage && (
+            <div>
+              <p className="error-text">{errorMessage}</p>
+            </div>
+          )}
+          {/* <Link to="/" > */}
+          <Button className="AllBtn FormBtn" type="submit" onClick={handleFormSubmit}>
+            Create Blog
+          </Button>
+          {/* </Link> */}
 
-        {errorMessage && (
-          <div>
-            <p className="error-text">{errorMessage}</p>
-          </div>
-        )}
-        <Button className="AllBtn FormBtn" onClick={handleFormSubmit} type="submit">
-          Submit
-        </Button>
 
-        
-        <Button className="AllBtn FormBtn" onClick={showWidget}>
-
-          Upload Photo
-        </Button>
-      </Form>
-     </Container>
+          <Button className="AllBtn FormBtn" type="button" onClick={showWidget}>
+            Upload Photo
+          </Button>
+        </Form>
+      </Container>
   );
-}
+};
 
 export default BlogForm;
