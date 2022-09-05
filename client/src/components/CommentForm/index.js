@@ -20,7 +20,7 @@ const CommentForm = () => {
   const [addComment, { error }] = useMutation(ADD_COMMENT, {
     update(cache, { data: { addComment } }) {
 
-      // update thought array's cache
+      // update blog array's cache
       const { comments } = cache.readQuery({ query: QUERY_BLOGS });
       cache.writeQuery({
         query: QUERY_BLOGS,
