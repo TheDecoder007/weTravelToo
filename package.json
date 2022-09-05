@@ -35,9 +35,8 @@
         "graphql": "^16.6.0",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.5.3"
-    },
-    "engines": {
-        "node": "16.15.0"
+    }
+   
     }
     
-}
+
