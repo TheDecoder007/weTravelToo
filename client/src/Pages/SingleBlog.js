@@ -71,35 +71,35 @@ const SingleBlog = (props) => {
     },
   });
 
-  const [deleteBlog] = useMutation(DELETE_BLOG, {
-    update(cache, { data: { deleteBlog } }) {
+  // const [deleteBlog] = useMutation(DELETE_BLOG, {
+  //   update(cache, { data: { deleteBlog } }) {
 
-      //update blog array
-      const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
-      cache.modify({
-        id: cache.identify(blogs),
-        query: QUERY_BLOGS,
-        fields: {
-          blogs(existingBlog, { readField }) {
-            return existingBlog.filter(readField(deleteBlog(blog._id, blogs)));
-          },
-        },
-      });
+  //     //update blog array
+  //     const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
+  //     cache.modify({
+  //       id: cache.identify(blogs),
+  //       query: QUERY_BLOGS,
+  //       fields: {
+  //         blogs(existingBlog, { readField }) {
+  //           return existingBlog.filter(readField(deleteBlog(blog._id, blogs)));
+  //         },
+  //       },
+  //     });
 
       //update me array
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.modify({
-        id: cache.identify(me),
-        query: QUERY_ME,
-        fields: {
-          me(existingBlogs, { readField }) {
-            return existingBlogs.filter(readField(deleteBlog(blog._id, blogs)));
-          },
-        },
-      });
-      console.log(me, "heres ME");
-    },
-  });
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.modify({
+  //       id: cache.identify(me),
+  //       query: QUERY_ME,
+  //       fields: {
+  //         me(existingBlogs, { readField }) {
+  //           return existingBlogs.filter(readField(deleteBlog(blog._id, blogs)));
+  //         },
+  //       },
+  //     });
+  //     console.log(me, "heres ME");
+  //   },
+  // });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
