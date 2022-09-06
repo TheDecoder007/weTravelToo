@@ -21,56 +21,61 @@ const SingleBlog = (props) => {
     blogImage: "",
   });
 
-  const [deleteBlog] = useMutation(DELETE_BLOG, {
-    update(cache, { data: { deleteBlog } }) {
-      //update blog array
-      const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
-      cache.modify({
-        id: cache.identify(blogs),
-        query: QUERY_BLOGS,
-        fields: {
-          blogs(existingBlog = [], { readField }) {
-            const deleteOneBlog = cache.writeFragment({
-              data: deleteBlog,
-              fragment: gql`
-                fragment NewBlog on blog {
-                  _id
-                  blogTitle
-                  blogDescription
-                  blogText
-                  blogImage
-                }
-              `,
-            });
-            return [...existingBlog, deleteOneBlog];
-          },
-        },
-      });
 
-      //update me array
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.modify({
-        id: cache.identify(me),
-        query: QUERY_ME,
-        fields: {
-          me(existingBlogs = [], { readField }) {
-            const newMe = cache.writeFragment({
-              data: deleteBlog,
-              fragment: gql`
-                fragment newBlog on blogs {
-                  me
-                  blogs
-                }
-              `,
-            });
-            return [...existingBlogs, newMe];
-          },
-        },
-      });
-      console.log(me, "heres ME");
-    },
-  });
+  const [deleteBlog] = useMutation(DELETE_BLOG);
+  //   {
+  
+  //   update(cache, { data: { deleteBlog } }) {
+  //     //update blog array
+  //     const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
+  //     cache.modify({
+  //       id: cache.identify(blogs),
+  //       query: QUERY_BLOGS,
+  //       fields: {
+  //         blogs(existingBlog = [], { readField }) {
+  //           const deleteOneBlog = cache.writeFragment({
+  //             data: deleteBlog,
+  //             fragment: gql`
+  //               fragment NewBlog on blog {
+  //                 _id
+  //                 blogTitle
+  //                 blogDescription
+  //                 blogText
+  //                 blogImage
+  //               }
+  //             `,
+  //           });
+  //           return [...existingBlog, deleteOneBlog];
+  //         },
+  //       },
+  //     });
 
+  //     //update me array
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.modify({
+  //       id: cache.identify(me),
+  //       query: QUERY_ME,
+  //       fields: {
+  //         me(existingBlogs = [], { readField }) {
+  //           const newMe = cache.writeFragment({
+  //             data: deleteBlog,
+  //             fragment: gql`
+  //               fragment newBlog on blogs {
+  //                 me
+  //                 blogs
+  //               }
+  //             `,
+  //           });
+  //           return [...existingBlogs, newMe];
+  //         },
+  //       },
+  //     });
+  //     console.log(me, "heres ME");
+    
+  //   },
+  // });
+
+  // Different try
   // const [deleteBlog] = useMutation(DELETE_BLOG, {
   //   update(cache, { data: { deleteBlog } }) {
 
@@ -109,7 +114,11 @@ const SingleBlog = (props) => {
         variables: { ...blogState },
       });
 
-      setBlogState(null);
+      // setBlogState({ 
+      //   blogTitle: "",
+      //   blogDescription: "",
+      //   blogText: "",
+      //   blogImage: "", });
     } catch (e) {
       console.error(e);
     }

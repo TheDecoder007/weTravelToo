@@ -48,7 +48,9 @@ console.log(user, "bananas")
   return (
     
     <Container fluid className="projectCont" id="blogs">
-      <Row className="sectionTopRow">
+      {Auth.loggedIn() ? ( 
+        <>
+        <Row className="sectionTopRow">
         <Col>
         <Link to="/create">
           <Button className="AuthBtn">Create Blog
@@ -73,6 +75,28 @@ console.log(user, "bananas")
           </Link>
         </Col>
       </Row>
+      </>
+      ) : (
+        <>
+         <Row className="sectionTopRow">
+            <Col>
+              <Link to="/signup">
+                <Button className="AllBtn HomeBtn">Sign Up</Button>
+              </Link>
+            </Col>
+            <Col>
+            <h3 className="text-center sectionHead">
+          {userParam ? `${user.username}'s` : "Your"} profile.
+          </h3>
+            </Col>
+            <Col>
+              <Link to="/login">
+                <Button className="AllBtn HomeBtn">Log In</Button>
+              </Link>
+            </Col>
+          </Row>
+        </>
+        )}
       <Row className="CardRow">
         <BlogList key={user._id} blogs={user.blogs} title={`${user.username}'s blogs...`} />
       </Row>
