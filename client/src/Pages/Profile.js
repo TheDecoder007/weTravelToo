@@ -100,6 +100,9 @@ console.log(user, "bananas")
       <Row className="CardRow">
         <BlogList key={user._id} blogs={user.blogs} title={`${user.username}'s blogs...`} />
       </Row>
+      <Link to="/">
+          <Button className="AllBtn ">Go Home</Button>
+        </Link>
     </Container>
   );
 };
