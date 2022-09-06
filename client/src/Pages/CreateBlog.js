@@ -10,7 +10,7 @@ export default function CreateBlog() {
 console.log("cherry")
 
 return (
-   <Container fluid className="projectCont">
+   <Container fluid className="projectCont createCont">
    
       <Row className="sectionTopRow">
         <Col>

@@ -20,3 +20,9 @@
 .formHead {
     color: navy;
 }
+
+@media screen and (max-width: 415px) {
+    .CreateCont{
+        max-width: 370px;
+    }
+  }
