@@ -49,10 +49,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<img width="1511" alt="Screen Shot 2022-09-05 at 9 55 38 PM" src="https://user-images.githubusercontent.com/99697175/188531509-3eed4214-962c-4085-ba61-fc2ddc6a856f.png">
+
+<img width="760" alt="Screen Shot 2022-09-05 at 9 55 29 PM" src="https://user-images.githubusercontent.com/99697175/188531523-d24a7c10-8986-4a90-90de-782afe17a7bb.png">
+
+<img width="1510" alt="Screen Shot 2022-09-05 at 9 55 53 PM" src="https://user-images.githubusercontent.com/99697175/188531560-cc5f003c-3eec-477c-978d-e7d4f805d13e.png">
+
 * WeTravelToo is a remake of WeTravel, this time using the full MERN stack. Its a travel blog site, where users can post an image and a blog about thier destinations. 
 
 
-Use the `BLANK_README.md` to get started.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
