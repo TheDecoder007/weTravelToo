@@ -141,3 +141,9 @@
   color: white;
   text-shadow: 0 0 2px navy;
 }
+
+/* @media screen and (max-width: 415px) {
+  .createCont{
+      max-width: 370px;
+  }
+} */
