@@ -4,7 +4,7 @@
   <h1 align="center">We Travel Too</h1>
 
   <p align="center">
-    24. Interactive MERN SPA Project 3
+   Full MERN stack application
     <br />
     <a href="https://github.com/TheDecoder007/weTravelToo"><strong>Github</strong></a>
   </p>
@@ -12,28 +12,17 @@
   </p>
 </div>
 
-<a href="https://docs.google.com/presentation/d/14cvW3UxNp38X0EqmcmSzbEp1ul1wJHN7K1N5rhPtNpM/edit#slide=id.p"><strong>Google Slides</strong></a>
-
-
 <!-- TABLE OF CONTENTS -->
 
 <summary>Table of Contents</summary>
   <ol>
     <li>
     <a href="#about-the-project">About The Project</a>
-      <ul>
-<li>
-    <a href="#built-with">Built With</a></li>
-      </ul>
     </li>
+<li>
+    <a href="#technologies-used">Technologies Used</a></li>
     <li>
     <a href="#getting-started">Getting Started</a>
-      <ul>
-<li>
-    <a href="#prerequisites">Prerequisites</a></li>
-<li>
-    <a href="#installation">Installation</a></li>
-      </ul>
     </li>
 <li>
     <a href="#license">License</a></li>
@@ -51,12 +40,9 @@
 
 * WeTravelToo is a remake of WeTravel, this time using the full MERN stack. Its a travel blog site, where users can post an image and a blog about thier destinations. 
 
-
-Use the `BLANK_README.md` to get started.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
+### Technologies Used
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 <br>
@@ -115,7 +101,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact the contributors
 
-<a href="https://github.com/TheDecoder007"><strong>Ryan Murphy</strong></a>
+<a href="https://github.com/TheDecoder007"><strong>The Decoder</strong></a>
 
 <a href="https://github.com/dallas1a"><strong>Dallas Bailey</strong></a>
 
