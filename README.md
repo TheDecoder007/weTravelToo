@@ -8,7 +8,7 @@
     <br />
     <a href="https://github.com/TheDecoder007/weTravelToo"><strong>Github</strong></a>
   </p>
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Heroku</strong></a>
+    <a href="https://we-travel-too.herokuapp.com/"><strong>Deployed App on Heroku</strong></a>
   </p>
 </div>
 
