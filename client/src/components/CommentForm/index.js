@@ -11,52 +11,68 @@ import "./style.css";
 
 const CommentForm = () => {
   const [formState, setFormState] = useState({
-    commentBody: ""
+    commentBody: "",
    
   });
-  const { commentBody } = formState;
+  // const { commentBody } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT, {
+  const [addComment] = useMutation(ADD_COMMENT, {
     update(cache, { data: { addComment } }) {
 
       // update blog array's cache
-      const { comments } = cache.readQuery({ query: QUERY_BLOGS });
+      const { blogs } = cache.readQuery({ query: QUERY_BLOGS });
       cache.writeQuery({
         query: QUERY_BLOGS,
-        data: { comments: [addComment, ...comments] },
+        data: { blogs: { comments: [...blogs.comments, addComment] } },
       });
     }
   });
-console.log(commentBody, "commentBody")
+// console.log(commentBody, "commentBody")
+
+  // const handleChange = (event) => {
+  //   if (event.target.value.length <= 140) {
+  //       setFormState(event.target.value);
+  //     }
+  //     if (!event.target.value.length) {
+  //       setErrorMessage(`${event.target.name} is required.`);
+  //     } else {
+  //       setErrorMessage("");
+  //     }
+  //   if (!errorMessage) {
+  //     setFormState({ ...formState, [event.target.name]: event.target.value });
+  //   }
+  // }
 
   const handleChange = (event) => {
-    if (event.target.value.length <= 140) {
-        setFormState(event.target.value);
-      }
-      if (!event.target.value.length) {
-        setErrorMessage(`${event.target.name} is required.`);
-      } else {
-        setErrorMessage("");
-      }
-    if (!errorMessage) {
-      setFormState({ ...formState, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    if (!event.target.value) {
+      setErrorMessage(`${event.target.name} is required.`);
+    } else {
+      setErrorMessage("");
     }
-  }
+    if (!errorMessage) {
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    }
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-console.log(commentBody,"Commented")
+// console.log(commentBody,"Commented")
 
     try {
       // add comment to database
       await addComment({
-        variables: { commentBody },
+        variables: { ...formState },
       });
 
       // clear form value
-      setFormState("");
+      setFormState({
+       commentBody: "", });
     } catch (e) {
       console.error(e);
     }
@@ -74,7 +90,7 @@ console.log(commentBody,"Commented")
       as="textarea"
       aria-label="With textarea"
       name="commentBody"
-      defaultValue={commentBody}
+      value={formState.commentBody}
       onChange={handleChange}
       rows="3"
       maxLength="140"
@@ -88,7 +104,7 @@ console.log(commentBody,"Commented")
     <Button className="AllBtn" onClick={handleFormSubmit}>Submit Comment         
           </Button>
 </Col>
-</Row>
+</Row> 
   <br/>
     </div>
     );
